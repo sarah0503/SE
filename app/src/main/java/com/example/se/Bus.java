@@ -1,3 +1,5 @@
+package com.example.se;
+
 public class Bus {
     static int count = 0;
     int id;
