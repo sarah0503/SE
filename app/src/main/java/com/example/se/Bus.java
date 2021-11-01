@@ -24,4 +24,10 @@ public class Bus {
     void setDeparture(String departure){
         this.departure = departure;
     }
+    String getDeparture(){return departure;}
+    void setArrival(String arrival){this.arrival = arrival;}
+    String getArrival() { return arrival; }
+
+
+
 }
