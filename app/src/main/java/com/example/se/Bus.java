@@ -10,7 +10,7 @@ public class Bus {
     int capacity;
     int departureDay;
     Reservation reservations[];
-    Wating watings[];
+    Waiting waitings[];
     void Bus(int id){
         this.id = id;
         count++;
