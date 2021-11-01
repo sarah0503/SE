@@ -28,6 +28,11 @@ public class Bus {
     void setArrival(String arrival){this.arrival = arrival;}
     String getArrival() { return arrival; }
 
+    public void setDapartureTime(int dapartureTime) {
+        this.dapartureTime = dapartureTime;
+    }
 
-
+    public int getDapartureTime() {
+        return dapartureTime;
+    }
 }
