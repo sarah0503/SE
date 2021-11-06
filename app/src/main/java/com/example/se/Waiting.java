@@ -1,13 +1,13 @@
 package com.example.se;
 
-public class Reservation {
+public class Waiting {
     private int busId;
     private int userId;
-    private int reservationId;
+    private int waitingId;
     private static int count = 0;
 
-    Reservation(){
-        reservationId = count;
+    Waiting(){
+        waitingId = count;
         count ++;
     }
 
@@ -27,7 +27,7 @@ public class Reservation {
         return userId;
     }
 
-    public int getReservationId() {
-        return reservationId;
+    public int getWaitingId() {
+        return waitingId;
     }
 }

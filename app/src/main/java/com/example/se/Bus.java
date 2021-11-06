@@ -10,7 +10,7 @@ public class Bus {
     int capacity;
     int departureDay;
     Reservation reservations[];
-    Wating watings[];
+    Waiting waitings[];
     void Bus(int id){
         this.id = id;
         count++;
@@ -23,5 +23,16 @@ public class Bus {
     }
     void setDeparture(String departure){
         this.departure = departure;
+    }
+    String getDeparture(){return departure;}
+    void setArrival(String arrival){this.arrival = arrival;}
+    String getArrival() { return arrival; }
+
+    public void setDapartureTime(int dapartureTime) {
+        this.dapartureTime = dapartureTime;
+    }
+
+    public int getDapartureTime() {
+        return dapartureTime;
     }
 }
