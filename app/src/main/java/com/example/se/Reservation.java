@@ -4,6 +4,8 @@ public class Reservation {
     private int busId;
     private int userId;
     private int reservationId;
+    private int time;
+    private String place;
     private static int count = 0;
 
     Reservation(){
@@ -29,5 +31,21 @@ public class Reservation {
 
     public int getReservationId() {
         return reservationId;
+    }
+
+    public int getTime(){
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
     }
 }
