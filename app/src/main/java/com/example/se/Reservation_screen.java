@@ -63,9 +63,10 @@ public class Reservation_screen extends AppCompatActivity {
                 String place;
                 place = placeSpinner.getSelectedItem().toString();
                 time = Integer.parseInt(timeSpinner.getSelectedItem().toString());
-                Reservation temp = new Reservation();
-                temp.setPlace(place);
-                temp.setTime(time);
+                MainActivity.reservations[Reservation.count] = new Reservation();
+                MainActivity.reservations[Reservation.count].setPlace(place);
+                MainActivity.reservations[Reservation.count].setTime(time);
+                Reservation.count++;
                 //currentUser.addReservation(temp);
             }
         });

@@ -1,12 +1,12 @@
 package com.example.se;
 
 public class Reservation {
+    public static int count = 0;
     private int busId;
     private int userId;
     private int reservationId;
     private int time;
     private String place;
-    private static int count = 0;
 
     Reservation(){
         reservationId = count;
