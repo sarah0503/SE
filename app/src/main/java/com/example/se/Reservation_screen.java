@@ -59,14 +59,35 @@ public class Reservation_screen extends AppCompatActivity {
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //버스아이디 찾아서 버스 객체 찾기
+                Bus currentBus = new Bus();
+
                 int time;
                 String place;
                 place = placeSpinner.getSelectedItem().toString();
                 time = Integer.parseInt(timeSpinner.getSelectedItem().toString());
-                Reservation temp = new Reservation();
-                temp.setPlace(place);
-                temp.setTime(time);
-                //currentUser.addReservation(temp);
+
+                if(currentBus.getCurrentCapacity() < currentBus.capacity){
+                    MainActivity.reservations[Reservation.count] = new Reservation();
+                    MainActivity.reservations[Reservation.count].setPlace(place);
+                    MainActivity.reservations[Reservation.count].setTime(time);
+                    MainActivity.reservations[Reservation.count].setBusId(currentBus.id);
+                    MainActivity.reservations[Reservation.count].setUserId(currnetUser);
+                    Reservation.count++;
+                    currentUser.addReservation(MainActivity.reservations[Reservation.count]);
+                    currentBus.increaseCurrentCapacity();
+                }//예약 성공
+                else{
+                    MainActivity.waitings[Waiting.count] = new Waiting();
+                    MainActivity.waitings[Waiting.count].setPlace(place);
+                    MainActivity.waitings[Waiting.count].setTime(time);
+                    MainActivity.waitings[Waiting.count].setBusId(currentBus.id);
+                    MainActivity.waitings[Waiting.count].setUserId(currnetUser);
+                    Waiting.count++;
+                    currentUser.addWaiting(MainActivity.waitings[Waiting.count]);
+
+
+                }//예약 실패 --> 대가
             }
         });
 

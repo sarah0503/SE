@@ -1,10 +1,12 @@
 package com.example.se;
 
 public class Waiting {
+    public static int count = 0;
     private int busId;
     private int userId;
     private int waitingId;
-    private static int count = 0;
+    private int time;
+    private String place;
 
     Waiting(){
         waitingId = count;
@@ -29,5 +31,21 @@ public class Waiting {
 
     public int getWaitingId() {
         return waitingId;
+    }
+
+    public int getTime(){
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
     }
 }
