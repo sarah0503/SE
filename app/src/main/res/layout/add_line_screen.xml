@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/lineEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="추가할 정류장 명"
+            android:ems="15"/>
+
+        <Button
+            android:id="@+id/addLineButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="추가"/>
+
+    </LinearLayout>
+
+
+    <ListView
+        android:id="@+id/lineListView"
+        android:layout_width="match_parent"
+        android:layout_height="630dp"></ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/timeAddButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="출발 시간 추가"/>
+
+    </LinearLayout>
+
+</LinearLayout>
