@@ -13,7 +13,7 @@ import android.widget.*;
 
 public class Manager_home_screen extends AppCompatActivity {
     private Button lineButton, noticeButton, LNFButton;
-    private  String[] selects = {"노선 추가", "노선 변경", "노선 조"};
+    private  String[] selects = {"노선 추가", "노선 변경", "노선 조회"};
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
