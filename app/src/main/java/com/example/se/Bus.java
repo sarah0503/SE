@@ -8,6 +8,7 @@ public class Bus {
     String stops[];
     int dapartureTime;
     int capacity;
+    int waitingCount = 0;
     int currentCapacity = 0;
     int departureDay;
     Reservation reservations[];
@@ -16,6 +17,15 @@ public class Bus {
         this.id = id;
         count++;
     }
+
+   public void increaseWaitingCount(){
+        this.waitingCount++;
+   }
+
+    public int getWaitingCount() {
+        return waitingCount;
+    }
+
     void setCapacity(int capacity){
         this.capacity = capacity;
     }
