@@ -1,5 +1,4 @@
-
-        package com.example.se;
+package com.example.se;
 
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
@@ -41,8 +40,8 @@ public class AddLineAdapter extends RecyclerView.Adapter<AddLineAdapter.ViewHold
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView departureTextView;
-        public TextView arrivalTextView;
+        private TextView departureTextView;
+        private TextView arrivalTextView;
 
         ViewHolder(@NonNull View itemView){
             super(itemView);
