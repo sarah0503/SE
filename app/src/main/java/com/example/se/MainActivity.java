@@ -7,7 +7,7 @@ import android.os.Bundle;
 public class MainActivity extends AppCompatActivity {
 
     public static Reservation reservations[] = new Reservation[100];
-    public static User users[] = new User[100];
+    //public static User users[] = new User[100];
     public static Bus buses[] = new Bus[100];
     public static Waiting waitings[] = new Waiting[100];
 
