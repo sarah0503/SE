@@ -6,9 +6,12 @@
         <entry key="../../../../../layout/custom_preview.xml" value="0.1640625" />
         <entry key="..\:/Users/leehb/Documents/GitHub/SE/app/src/main/res/layout/add_line_screen.xml" value="0.25364583333333335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.13728470111448834" />
+        <entry key="app/src/main/res/layout/add_line.xml" value="0.1" />
         <entry key="app/src/main/res/layout/add_line_screen.xml" value="0.335" />
         <entry key="app/src/main/res/layout/home_screen.xml" value="0.125" />
         <entry key="app/src/main/res/layout/join_screen.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/line.xml" value="0.14895833333333333" />
+        <entry key="app/src/main/res/layout/login_screen.xml" value="0.335" />
         <entry key="app/src/main/res/layout/manager_home_screen.xml" value="0.1734375" />
         <entry key="app/src/main/res/layout/qr_issue_screen.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/reservation_pop.xml" value="0.22644927536231885" />
