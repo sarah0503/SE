@@ -7,14 +7,15 @@ public class Bus {
     String arrival;
     String stops[];
     int dapartureTime;
-    int capacity;
+    int capacity =45;
     int waitingCount = 0;
     int currentCapacity = 0;
     int departureDay;
     Reservation reservations[];
     Waiting waitings[];
-    void Bus(int id){
-        this.id = id;
+    void Bus(){
+        this.id = count;
+        this.capacity = 45;
         count++;
     }
 
