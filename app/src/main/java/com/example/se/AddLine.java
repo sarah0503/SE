@@ -1,64 +1,54 @@
 package com.example.se;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class AddLine extends AppCompatActivity {
 
-    ListView lineListView;
-    ArrayAdapter<String> adapter;
-    ArrayList<String> listItem;
-
-    EditText lineEditText;
-    Button timeAddButton;
+    private AddLineAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_line_screen);
 
-        lineEditText = findViewById(R.id.lineEditText);
-        timeAddButton = findViewById(R.id.timeAddButton);
+        init();
 
-        //DB 사용 전
-        listItem = new ArrayList<String>();
-        listItem.add("출발지");
-        listItem.add("경유지1");
-        listItem.add("경유지2");
-        listItem.add("도착지");
+        getData();
+    }
 
-        timeAddButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listItem.add(lineEditText.getText().toString());
-                adapter.notifyDataSetChanged();
-                lineEditText.setText("");
-                //DB에도 추가??
-            }
-        });
+    private void init() {
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
 
-        adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, listItem);
-        lineListView = findViewById(R.id.lineListView);
-        lineListView.setAdapter(adapter);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
 
-//        lineListView.setOnClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                //삭제 확인 메시지
-//
-//                listItem.remove(i);
-//                adapter.notifyDataSetChanged();
-//            }
-//        });
+        adapter = new AddLineAdapter();
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void getData() { //임의 데이터
+        List<String> departureList = Arrays.asList("출발지1", "출발지2", "출발지3", "출발지4", "출발지5", "출발지6", "출발지7",
+                "출발지8", "출발지9", "출발지10", "출발지11", "출발지12");
+
+        List<String> arrivalList = Arrays.asList("도착지1", "도착지2", "도착지3", "도착지4", "도착지5", "도착지6", "도착지7",
+                "도착지8", "도착지9", "도착지10", "도착지11", "도착지12");
+
+        for(int i = 0; i < departureList.size(); i++) {
+            Bus bus = new Bus();
+            bus.setDeparture(departureList.get(i));
+            bus.setArrival(arrivalList.get(i));
+
+            adapter.addItem(bus);
+        }
+
+        adapter.notifyDataSetChanged();
     }
 }
