@@ -1,10 +1,12 @@
 
         package com.example.se;
 
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -38,7 +40,7 @@ public class AddLineAdapter extends RecyclerView.Adapter<AddLineAdapter.ViewHold
         busArrayList.add(bus);
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class ViewHolder extends RecyclerView.ViewHolder {
         public TextView departureTextView;
         public TextView arrivalTextView;
 
@@ -47,27 +49,33 @@ public class AddLineAdapter extends RecyclerView.Adapter<AddLineAdapter.ViewHold
 
             departureTextView = itemView.findViewById(R.id.departureTextView);
             arrivalTextView = itemView.findViewById(R.id.arrivalTextView);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                    builder.setTitle("Confirm");
+                    builder.setMessage("노선을 추가하시겠습니까?");
+                    builder.setPositiveButton("추가", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int i) {
+                            Toast.makeText(builder.getContext(), "노선이 추가되었습니다.", Toast.LENGTH_LONG).show();
+
+
+                            // 노선 추가하는 동작
+
+
+                        }
+                    });
+                    builder.setNeutralButton("취소", null);
+                    builder.create().show();
+                }
+            });
         }
 
         void onBind(Bus bus) {
             departureTextView.setText(bus.getDeparture());
             arrivalTextView.setText(bus.getArrival());
-        }
-
-        @Override
-        public void onClick(View view) {
-            switch(view.getId()) {
-                case R.id.list_item:
-                    //추가하시겠습니까?
-
-                    //AlertDialog.Builder builder = new AlertDialog.Builder(AddLineAdapter.ViewHolder.this);
-                    //builder.setTitle("Confirm");
-                    //builder.setMessage("노선을 추가하시겠습니까?");
-                    //builder.setPositiveButton("추가", null);
-                    //builder.setNeutralButton("취소", null);
-                    //builder.create().show();
-                    break;
-            }
         }
     }
 }
