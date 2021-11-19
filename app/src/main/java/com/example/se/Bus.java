@@ -15,12 +15,8 @@ public class Bus {
         this.id = id;
         count++;
     }
-    void setCapacity(int capacity){
-        this.capacity = capacity;
-    }
-    int getCapacity(){
-        return capacity;
-    }
+    void setCapacity(int capacity){this.capacity = capacity;}
+    int getCapacity(){ return capacity; }
     void setDeparture(String departure){
         this.departure = departure;
     }
