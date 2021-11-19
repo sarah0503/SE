@@ -23,6 +23,20 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter></activity>
 
+        <activity android:name=".Manager_home_screen"
+            android:exported="true"
+            android:usesCleartextTraffic="true"><intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
+
+        <activity android:name=".AddLine"
+            android:exported="true"
+            android:usesCleartextTraffic="true"><intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
