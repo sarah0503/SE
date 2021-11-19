@@ -70,7 +70,7 @@ public class Reservation_screen extends AppCompatActivity {
                 place = placeSpinner.getSelectedItem().toString();
                 time = Integer.parseInt(timeSpinner.getSelectedItem().toString());
 
-                if(currentBus.getCurrentCapacity() >= currentBus.capacity){
+                if(currentBus.getCurrentCapacity() >= currentBus.getCapacity()){
 
 
                     AlertDialog.Builder failureDialog = new AlertDialog.Builder(Reservation_screen.this);
@@ -117,6 +117,10 @@ public class Reservation_screen extends AppCompatActivity {
 
                         }
                     });
+
+
+                    AlertDialog alertDialog = reservationDialog.create();
+                    alertDialog.show();
                 }//예약 성공
             }
         });
