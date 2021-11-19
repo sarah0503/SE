@@ -3,17 +3,30 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/And/SE/app/src/main/res/layout/join_screen.xml" value="0.16" />
-        <entry key="..\:/And/SE/app/src/main/res/layout/login_screen.xml" value="0.16" />
+        <entry key="../../../../../layout/custom_preview.xml" value="0.1640625" />
+        <entry key="..\:/Users/leehb/Documents/GitHub/SE/app/src/main/res/layout/add_line_screen.xml" value="0.25364583333333335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.13728470111448834" />
+        <entry key="app/src/main/res/layout/add_line_screen.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/home_screen.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/join_screen.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/manager_home_screen.xml" value="0.1734375" />
+        <entry key="app/src/main/res/layout/qr_issue_screen.xml" value="0.17604166666666668" />
+        <entry key="app/src/main/res/layout/reservation_pop.xml" value="0.22644927536231885" />
         <entry key="app/src/main/res/layout/resevation_screen.xml" value="0.5" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8 (1)" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="SuppressABINotification">
+    <option name="modulesWithSuppressedNotConfigured">
+      <set>
+        <option value="SE.app" />
+      </set>
+    </option>
   </component>
 </project>

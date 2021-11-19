@@ -86,7 +86,7 @@ public class Reservation_screen extends AppCompatActivity {
                             //    MainActivity.waitings[Waiting.count-1].setUserId(currnetUser);
                             //    currentUser.addWaiting(MainActivity.waitings[Waiting.count-1]);
                             String waitingCount = Integer.toString(currentBus.getWaitingCount());
-                            Toast.makeText(getApplicationContext(), waitingCount,Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "대기번호 :  " + waitingCount,Toast.LENGTH_LONG).show();
                         }
                     });
                     failureDialog.setNegativeButton("취소", new DialogInterface.OnClickListener() {
