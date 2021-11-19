@@ -15,10 +15,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-<<<<<<< Updated upstream
-        setContentView(R.layout.login_screen);
-=======
-        setContentView(R.layout.join_screen);
->>>>>>> Stashed changes
     }
 }
