@@ -10,9 +10,10 @@ public class User {
     int penalty_info; // 패널티 여부(?)
     int userID;
     static int user_count = 0; //사용자의 수를 누적하는 변수
-    Waiting waitings[];
-    Reservation reservations[];
-
+//    Waiting waitings[];
+//    Reservation reservations[];
+    //임시 생성자
+    public User(){}
     public User(String name, int id, String password, String email, int penalty_info, int userID) {
         this.name = name;
         this.id = id;

@@ -11,8 +11,8 @@ public class Bus {
     int waitingCount = 0;
     int currentCapacity = 0;
     int departureDay;
-    Reservation reservations[];
-    Waiting waitings[];
+//    Reservation reservations[];
+//    Waiting waitings[];
     void Bus(){
         this.id = count;
         this.capacity = 45;

@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 public class Reservation_screen extends AppCompatActivity {
-    Spinner placeSpinner, timeSpinner;
+    Spinner arrivalSpinner, departureSpinner, timeSpinner;
     Button doneButton;
 
     @Override
@@ -23,9 +23,11 @@ public class Reservation_screen extends AppCompatActivity {
         setContentView(R.layout.resevation_screen);
 
         doneButton = (Button) findViewById(R.id.doneButton);
-        placeSpinner = (Spinner) findViewById(R.id.placeSpinner);
+        departureSpinner = (Spinner) findViewById(R.id.departureSpinner);
+        arrivalSpinner = (Spinner) findViewById(R.id.arrivalSpinner);
         timeSpinner = (Spinner) findViewById(R.id.timeSpinner);
-        ArrayList<String> places = new ArrayList <String> ();
+        ArrayList<String> arrivals = new ArrayList <String> ();
+        ArrayList<String> departures = new ArrayList <String> ();
         //String places[] = new String[100];
         int place_count = 0;
         ArrayList<Integer> times = new ArrayList <Integer>();
@@ -38,20 +40,26 @@ public class Reservation_screen extends AppCompatActivity {
         b.setArrival("학교");
         b.setDapartureTime(10);
        // for(int i = 0; i<count; i++){
-            places.add(a.getArrival());
+            arrivals.add(a.getArrival());
            // places[place_count] = a.getArrival();
             //place_count++;
             times.add(a.getDapartureTime());
-            places.add(b.getArrival());
+            arrivals.add(b.getArrival());
            // places[place_count] = b.getArrival();
             times.add(b.getDapartureTime());
 
       //  }
-        ArrayAdapter<String> placeAdpater = new ArrayAdapter<String>(
+        ArrayAdapter<String> arrivalAdapter = new ArrayAdapter<String>(
                 getApplicationContext(),
                 R.layout.support_simple_spinner_dropdown_item,
-                places);
-        placeSpinner.setAdapter(placeAdpater);
+                arrivals);
+        arrivalSpinner.setAdapter(arrivalAdapter);
+
+        ArrayAdapter<String> departureAdpater = new ArrayAdapter<String>(
+                getApplicationContext(),
+                R.layout.support_simple_spinner_dropdown_item,
+                arrivals);
+        departureSpinner.setAdapter(departureAdpater);
 
         ArrayAdapter<Integer> timeAdapter = new ArrayAdapter<Integer>(
                 getApplicationContext(),
@@ -66,8 +74,10 @@ public class Reservation_screen extends AppCompatActivity {
                 Bus currentBus = new Bus();
 
                 int time;
-                String place;
-                place = placeSpinner.getSelectedItem().toString();
+                String arrival;
+                String departure;
+                arrival = arrivalSpinner.getSelectedItem().toString();
+                departure = departureSpinner.getSelectedItem().toString();
                 time = Integer.parseInt(timeSpinner.getSelectedItem().toString());
 
                 if(currentBus.getCurrentCapacity() >= currentBus.getCapacity()){
@@ -79,11 +89,13 @@ public class Reservation_screen extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             MainActivity.waitings[Waiting.count] = (Waiting) new Waiting();
+                            /**얘네 다 필요 없을 듯
                             MainActivity.waitings[Waiting.count-1].setTime(time);
-                            MainActivity.waitings[Waiting.count-1].setPlace(place);
+                            MainActivity.waitings[Waiting.count-1].setArrival(arrival);
+                            MainActivity.waitings[Waiting.count-1].setDeparture(departure); **/
                             MainActivity.waitings[Waiting.count-1].setBusId(currentBus.id);
                             currentBus.increaseWaitingCount();
-                            //    MainActivity.waitings[Waiting.count-1].setUserId(currnetUser);
+                            MainActivity.waitings[Waiting.count-1].setUserId(MainActivity.currentUser.getUserID());
                             //    currentUser.addWaiting(MainActivity.waitings[Waiting.count-1]);
                             String waitingCount = Integer.toString(currentBus.getWaitingCount());
                             Toast.makeText(getApplicationContext(), "대기번호 :  " + waitingCount,Toast.LENGTH_LONG).show();
@@ -102,10 +114,12 @@ public class Reservation_screen extends AppCompatActivity {
                 else{
 
                     MainActivity.reservations[Reservation.count] = new Reservation();
-                    MainActivity.reservations[Reservation.count-1].setPlace(place);
-                    MainActivity.reservations[Reservation.count-1].setTime(time);
+                    /**얘네 다 필요 없을 듯
+                    MainActivity.reservations[Reservation.count-1].setArrival(arrival);
+                    MainActivity.reservations[Reservation.count-1].setDeparture(departure);
+                    MainActivity.reservations[Reservation.count-1].setTime(time);        **/
                     MainActivity.reservations[Reservation.count-1].setBusId(currentBus.id);
-                    //  MainActivity.reservations[Reservation.count-1].setUserId(currnetUser);
+                    MainActivity.reservations[Reservation.count-1].setUserId(MainActivity.currentUser.getUserID());
                     //  currentUser.addReservation(MainActivity.reservations[Reservation.count-1]);
                     currentBus.increaseCurrentCapacity();
 

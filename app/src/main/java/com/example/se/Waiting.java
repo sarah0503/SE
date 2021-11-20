@@ -6,7 +6,8 @@ public class Waiting {
     private int userId;
     private int waitingId;
     private int time;
-    private String place;
+    private String arrival;
+    private String departure;
 
     Waiting(){
         waitingId = count;
@@ -41,11 +42,20 @@ public class Waiting {
         this.time = time;
     }
 
-    public String getPlace() {
-        return place;
+    public String getArrival() {
+        return arrival;
     }
 
-    public void setPlace(String place) {
-        this.place = place;
+    public void setArrival(String arrival) {
+        this.arrival = arrival;
+    }
+
+    public String getDeparture() {
+        return departure;
+    }
+
+    public void setDeparture(String departure) {
+        this.departure = departure;
     }
 }
+
