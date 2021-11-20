@@ -10,17 +10,12 @@ public class MainActivity extends AppCompatActivity {
     public static User users[] = new User[100];
     public static Bus buses[] = new Bus[100];
     public static Waiting waitings[] = new Waiting[100];
-    //임시
-    //public static User currentUser = new User();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//<<<<<<< Updated upstream
-//        setContentView(R.layout.login_screen);
-//=======
-//        setContentView(R.layout.join_screen);
-//>>>>>>> Stashed changes
+        setContentView(R.layout.login_screen);
+        setContentView(R.layout.join_screen);
     }
 }
