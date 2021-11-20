@@ -13,31 +13,26 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.Arrays;
 import java.util.List;
 
-public class ManagerLineActivity extends AppCompatActivity {
+public class EditLine extends AppCompatActivity {
 
-    private ManagerLineListAdapter adapter;
-    private Button addButton;
-    private Button editButton;
+    private EditLineAdapter adapter;
+    private Button storeButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.inquiry_route_screen);
-        addButton = findViewById(R.id.addButton);
-        editButton = findViewById(R.id.editButton);
+        setContentView(R.layout.edit_route_screen);
+        storeButton = findViewById(R.id.storeButton);
 
-        addButton.setOnClickListener(new View.OnClickListener() { //노선 추가 버튼을 눌렀을 때
+        storeButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AddLine.class);
-                startActivity(intent);
-            }
-        });
+            public void onClick(View view) {
 
-        editButton.setOnClickListener(new View.OnClickListener() { //노선 변경 버튼을 눌렀 때
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), EditLine.class);
+
+                //저장하기
+
+
+                Intent intent = new Intent(getApplicationContext(), ManagerLineActivity.class);
                 startActivity(intent);
             }
         });
@@ -48,12 +43,12 @@ public class ManagerLineActivity extends AppCompatActivity {
     }
 
     private void init() {
-        RecyclerView recyclerView = findViewById(R.id.inquiryRecyclerView);
+        RecyclerView recyclerView = findViewById(R.id.editRecyclerView);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        adapter = new ManagerLineListAdapter();
+        adapter = new EditLineAdapter();
         recyclerView.setAdapter(adapter);
     }
 

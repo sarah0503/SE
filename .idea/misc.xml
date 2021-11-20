@@ -6,10 +6,13 @@
         <entry key="..\:/Users/leehb/Documents/GitHub/SE/app/src/main/res/drawable/check_box_icon.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/leehb/Documents/GitHub/SE/app/src/main/res/layout/activity_main.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/leehb/Documents/GitHub/SE/app/src/main/res/layout/add_line_screen.xml" value="0.264" />
+        <entry key="..\:/Users/leehb/Documents/GitHub/SE/app/src/main/res/layout/edit_route_screen.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/leehb/Documents/GitHub/SE/app/src/main/res/layout/editing_screen.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/leehb/Documents/GitHub/SE/app/src/main/res/layout/home_screen.xml" value="0.24974358974358973" />
         <entry key="..\:/Users/leehb/Documents/GitHub/SE/app/src/main/res/layout/inquiry_route_screen.xml" value="0.264" />
         <entry key="..\:/Users/leehb/Documents/GitHub/SE/app/src/main/res/layout/line.xml" value="0.264" />
         <entry key="..\:/Users/leehb/Documents/GitHub/SE/app/src/main/res/layout/line_checkbox.xml" value="0.264" />
+        <entry key="..\:/Users/leehb/Documents/GitHub/SE/app/src/main/res/layout/line_stops.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/leehb/Documents/GitHub/SE/app/src/main/res/layout/resevation_screen.xml" value="0.25364583333333335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.13728470111448834" />
         <entry key="app/src/main/res/layout/resevation_screen.xml" value="0.5" />
