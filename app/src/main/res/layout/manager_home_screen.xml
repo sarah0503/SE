@@ -8,19 +8,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/lineButton"
-        android:text="노선 관리"/>
+        android:text="노선 관리"
+        android:padding="15dp"
+        android:layout_margin="20dp"
+        android:textSize="30dp"
+        android:layout_gravity="center_horizontal"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/noticeButton"
-        android:text="공지 사항 관리"/>
+        android:text="공지 사항 관리"
+        android:padding="15dp"
+        android:layout_margin="20dp"
+        android:textSize="30dp"
+        android:layout_gravity="center_horizontal"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/LNFButton"
-        android:text="분실물 게시판 관리"/>
+        android:text="분실물 게시판 관리"
+        android:padding="15dp"
+        android:layout_margin="20dp"
+        android:textSize="30dp"
+        android:layout_gravity="center_horizontal"/>
 
 
 </LinearLayout>
