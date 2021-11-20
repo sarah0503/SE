@@ -89,12 +89,13 @@ public class Reservation_screen extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             MainActivity.waitings[Waiting.count] = (Waiting) new Waiting();
+                            /**얘네 다 필요 없을 듯
                             MainActivity.waitings[Waiting.count-1].setTime(time);
                             MainActivity.waitings[Waiting.count-1].setArrival(arrival);
-                            MainActivity.waitings[Waiting.count-1].setDeparture(departure);
+                            MainActivity.waitings[Waiting.count-1].setDeparture(departure); **/
                             MainActivity.waitings[Waiting.count-1].setBusId(currentBus.id);
                             currentBus.increaseWaitingCount();
-                            //    MainActivity.waitings[Waiting.count-1].setUserId(currnetUser);
+                            MainActivity.waitings[Waiting.count-1].setUserId(MainActivity.currentUser.getUserID());
                             //    currentUser.addWaiting(MainActivity.waitings[Waiting.count-1]);
                             String waitingCount = Integer.toString(currentBus.getWaitingCount());
                             Toast.makeText(getApplicationContext(), "대기번호 :  " + waitingCount,Toast.LENGTH_LONG).show();
@@ -113,11 +114,12 @@ public class Reservation_screen extends AppCompatActivity {
                 else{
 
                     MainActivity.reservations[Reservation.count] = new Reservation();
+                    /**얘네 다 필요 없을 듯
                     MainActivity.reservations[Reservation.count-1].setArrival(arrival);
                     MainActivity.reservations[Reservation.count-1].setDeparture(departure);
-                    MainActivity.reservations[Reservation.count-1].setTime(time);
+                    MainActivity.reservations[Reservation.count-1].setTime(time);        **/
                     MainActivity.reservations[Reservation.count-1].setBusId(currentBus.id);
-                    //  MainActivity.reservations[Reservation.count-1].setUserId(currnetUser);
+                    MainActivity.reservations[Reservation.count-1].setUserId(MainActivity.currentUser.getUserID());
                     //  currentUser.addReservation(MainActivity.reservations[Reservation.count-1]);
                     currentBus.increaseCurrentCapacity();
 
