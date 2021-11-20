@@ -21,6 +21,13 @@ public class Home_screen  extends AppCompatActivity {
         noticeButton = (Button) findViewById(R.id.noticeButton);
         LNFButton = (Button) findViewById(R.id.LNFButton);
 
+        informationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Information_screen.class);
+                startActivity(intent);
+            }
+        });
         reservationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
