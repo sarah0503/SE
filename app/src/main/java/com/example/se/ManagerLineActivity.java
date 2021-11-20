@@ -22,7 +22,7 @@ public class ManagerLineActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.inquiry_route_screen);
+        setContentView(R.layout.manage_route_screen);
         addButton = findViewById(R.id.addButton);
         editButton = findViewById(R.id.editButton);
 
