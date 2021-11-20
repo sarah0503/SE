@@ -32,14 +32,17 @@ public class EditLine extends AppCompatActivity {
                 //저장하기
 
 
-                Intent intent = new Intent(getApplicationContext(), ManagerLineActivity.class);
-                startActivity(intent);
+                onClickBack(view);
             }
         });
 
         init();
 
         getData();
+    }
+
+    private void onClickBack(View v) {
+        finish();
     }
 
     private void init() {
