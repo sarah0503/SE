@@ -37,21 +37,7 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter></activity>
 
-        <activity android:name=".EditLine"
-            android:exported="true"
-            android:usesCleartextTraffic="true"><intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
-
         <activity android:name=".ManagerLineActivity"
-            android:exported="true"
-            android:usesCleartextTraffic="true"><intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
-
-        <activity android:name=".EditingLine"
             android:exported="true"
             android:usesCleartextTraffic="true"><intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -60,6 +46,16 @@
 
         <activity
             android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".Information_screen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
