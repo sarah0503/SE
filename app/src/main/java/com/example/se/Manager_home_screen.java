@@ -29,5 +29,13 @@ public class Manager_home_screen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        noticeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Notice.class);
+                startActivity(intent);
+            }
+        });
     }
 }

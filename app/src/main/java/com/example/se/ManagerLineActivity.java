@@ -48,7 +48,7 @@ public class ManagerLineActivity extends AppCompatActivity {
     }
 
     private void init() {
-        RecyclerView recyclerView = findViewById(R.id.inquiryRecyclerView);
+        RecyclerView recyclerView = findViewById(R.id.manageRecyclerView);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);

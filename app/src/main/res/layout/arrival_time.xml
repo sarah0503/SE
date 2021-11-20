@@ -15,11 +15,11 @@
         android:gravity="center_vertical">
 
         <TextView
-            android:id="@+id/stopTextView"
+            android:id="@+id/timeTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:includeFontPadding="false"
-            android:text="경유지"
+            android:text="시간"
             android:textSize="15sp"
             android:textColor="@color/black"/>
 
