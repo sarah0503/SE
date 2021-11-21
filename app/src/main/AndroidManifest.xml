@@ -37,6 +37,13 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter></activity>
 
+        <activity android:name=".EditLine"
+            android:exported="true"
+            android:usesCleartextTraffic="true"><intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
+
         <activity android:name=".ManagerLineActivity"
             android:exported="true"
             android:usesCleartextTraffic="true"><intent-filter>
@@ -44,7 +51,14 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter></activity>
 
-        <activity android:name=".Join"
+        <activity android:name=".Notice"
+            android:exported="true"
+            android:usesCleartextTraffic="true"><intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
+
+        <activity android:name=".AddNotice"
             android:exported="true"
             android:usesCleartextTraffic="true"><intent-filter>
             <action android:name="android.intent.action.MAIN" />
