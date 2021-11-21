@@ -20,7 +20,7 @@ public class Reservation_screen extends AppCompatActivity {
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.resevation_screen);
+        setContentView(R.layout.reservation_screen);
 
         doneButton = (Button) findViewById(R.id.doneButton);
         departureSpinner = (Spinner) findViewById(R.id.departureSpinner);
