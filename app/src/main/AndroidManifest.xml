@@ -51,7 +51,7 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter></activity>
 
-        <activity android:name=".Notice"
+        <activity android:name=".ManagerNoticeActivity"
             android:exported="true"
             android:usesCleartextTraffic="true"><intent-filter>
             <action android:name="android.intent.action.MAIN" />

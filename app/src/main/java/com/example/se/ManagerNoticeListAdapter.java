@@ -14,20 +14,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.ViewHolder4> {
+public class ManagerNoticeListAdapter extends RecyclerView.Adapter<ManagerNoticeListAdapter.ViewHolder4> {
 
-    private ArrayList<NoticeForm> noticeArrayList = new ArrayList<>();
+    private ArrayList<Notice> noticeArrayList = new ArrayList<>();
 
     @NonNull
     @Override
-    public NoticeAdapter.ViewHolder4 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ManagerNoticeListAdapter.ViewHolder4 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.notice_checkbox, parent, false);
-        return new NoticeAdapter.ViewHolder4(view);
+        return new ManagerNoticeListAdapter.ViewHolder4(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NoticeAdapter.ViewHolder4 holder, int position) {
+    public void onBindViewHolder(@NonNull ManagerNoticeListAdapter.ViewHolder4 holder, int position) {
         holder.onBind(noticeArrayList.get(position));
 
         int pos = position;
@@ -69,8 +69,8 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.ViewHolder
         return noticeArrayList.size();
     }
 
-    void addItem(NoticeForm noticeForm) {
-        noticeArrayList.add(noticeForm);
+    void addItem(Notice notice) {
+        noticeArrayList.add(notice);
     }
 
     public class ViewHolder4 extends RecyclerView.ViewHolder {
@@ -86,9 +86,9 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.ViewHolder
             noticeCheckBox = itemView.findViewById(R.id.noticeCheckBox);
         }
 
-        public void onBind(NoticeForm noticeForm) {
-            titleTextView.setText(noticeForm.getTitle());
-            dateTextView.setText(noticeForm.getDate());
+        public void onBind(Notice notice) {
+            titleTextView.setText(notice.getTitle());
+            dateTextView.setText(notice.getDate());
         }
     }
 }
