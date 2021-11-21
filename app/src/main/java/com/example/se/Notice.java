@@ -17,7 +17,6 @@ public class Notice extends AppCompatActivity {
 
     private NoticeAdapter adapter;
     private Button noticeAddButton;
-    private Intent intent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,8 +27,8 @@ public class Notice extends AppCompatActivity {
         noticeAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent = new Intent(view.getContext(), AddNotice.class);
-                view.getContext().startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(), AddNotice.class);
+                startActivity(intent);
             }
         });
 

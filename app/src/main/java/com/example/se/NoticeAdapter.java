@@ -52,7 +52,13 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.ViewHolder
                         Toast.makeText(builder.getContext(), "공지사항이 삭제되었습니다.", Toast.LENGTH_LONG).show();
                     }
                 });
-                builder.setNeutralButton("취소", null);
+                builder.setNeutralButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        holder.noticeCheckBox.setChecked(false);
+                        Toast.makeText(builder.getContext(), "취소되었습니다.", Toast.LENGTH_LONG).show();
+                    }
+                });
                 builder.create().show();
             }
         });
@@ -77,6 +83,7 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.ViewHolder
 
             titleTextView = itemView.findViewById(R.id.titleTextView);
             dateTextView = itemView.findViewById(R.id.dateTextView);
+            noticeCheckBox = itemView.findViewById(R.id.noticeCheckBox);
         }
 
         public void onBind(NoticeForm noticeForm) {

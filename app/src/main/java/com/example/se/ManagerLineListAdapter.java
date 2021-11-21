@@ -52,7 +52,13 @@ public class ManagerLineListAdapter extends RecyclerView.Adapter<ManagerLineList
                         Toast.makeText(builder.getContext(), "노선이 삭제되었습니다.", Toast.LENGTH_LONG).show();
                     }
                 });
-                builder.setNeutralButton("취소", null);
+                builder.setNeutralButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        holder.checkBox.setChecked(false);
+                        Toast.makeText(builder.getContext(), "취소되었습니다.", Toast.LENGTH_LONG).show();
+                    }
+                });
                 builder.create().show();
             }
         });
