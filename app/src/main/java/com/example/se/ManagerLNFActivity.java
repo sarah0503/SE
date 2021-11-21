@@ -13,32 +13,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.Arrays;
 import java.util.List;
 
-public class ManagerNoticeActivity extends AppCompatActivity {
+public class ManagerLNFActivity extends AppCompatActivity {
 
-    private ManagerNoticeListAdapter adapter;
-    private Button noticeAddButton;
-    private Button noticeDeleteButton;
+    private ManagerLNFListAdapter adapter;
+    private Button lnfAddButton;
+    private Button lnfDeleteButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.notice_screen);
-        noticeAddButton = findViewById(R.id.noticeAddButton);
-        noticeDeleteButton = findViewById(R.id.noticeDeleteButton);
+        setContentView(R.layout.lnf_screen);
+        lnfAddButton = findViewById(R.id.lnfAddButton);
+        lnfDeleteButton = findViewById(R.id.lnfDeleteButton);
 
-        noticeAddButton.setOnClickListener(new View.OnClickListener() {
+        lnfAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //공지사항 추가 화면으로 이동
-                Intent intent = new Intent(getApplicationContext(), AddNotice.class);
+                Intent intent = new Intent(getApplicationContext(), AddLNF.class);
                 startActivity(intent);
-            }
-        });
-
-        noticeDeleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //선택한 체크박스 삭제
             }
         });
 
@@ -48,28 +40,30 @@ public class ManagerNoticeActivity extends AppCompatActivity {
     }
 
     private void init() {
-        RecyclerView recyclerView = findViewById(R.id.noticeRecyclerView);
+        RecyclerView recyclerView = findViewById(R.id.lnfRecyclerView);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        adapter = new ManagerNoticeListAdapter();
+        adapter = new ManagerLNFListAdapter();
         recyclerView.setAdapter(adapter);
     }
 
-    private void getData() { //임의 데이터
+    private void getData() {
         List<String> titleList = Arrays.asList("제목1", "제목2", "제목3", "제목4", "제목5", "제목6", "제목7",
                 "제목8", "제목9", "제목10", "제목11", "제목12");
 
-        List<String> dateList = Arrays.asList("날짜1", "날짜2", "날짜3", "날짜4", "날짜5", "날짜6", "날짜7",
+        //image
+
+        List<String> explainList = Arrays.asList("날짜1", "날짜2", "날짜3", "날짜4", "날짜5", "날짜6", "날짜7",
                 "날짜8", "날짜9", "날짜10", "날짜11", "날짜12");
 
         for(int i = 0; i < titleList.size(); i++) {
-            Notice notice = new Notice();
-            notice.setTitle(titleList.get(i));
-            notice.setDate(dateList.get(i));
+            LNF lnf = new LNF();
+            lnf.setTitle(titleList.get(i));
+            lnf.setExplain(explainList.get(i));
 
-            adapter.addItem(notice);
+            adapter.addItem(lnf);
         }
 
         adapter.notifyDataSetChanged();

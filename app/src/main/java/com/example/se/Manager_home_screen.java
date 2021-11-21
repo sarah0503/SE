@@ -35,5 +35,13 @@ public class Manager_home_screen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        LNFButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ManagerLNFActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

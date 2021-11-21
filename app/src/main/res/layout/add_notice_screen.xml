@@ -11,18 +11,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="10dp"
+        android:padding="10dp"
         android:hint="제목"
         android:ems="13"/>
 
     <EditText
         android:id="@+id/inputContentEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:layout_constraintTop_toBottomOf="@+id/inputTitleEditText"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="10dp"
-        android:hint="  내용"
-        android:ems="15"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="50dp"
+        android:padding="10dp"
+        android:gravity="top"
+        android:hint="내용을 입력해주세요."
         android:background="@drawable/content_border"/>
 
     <Button
