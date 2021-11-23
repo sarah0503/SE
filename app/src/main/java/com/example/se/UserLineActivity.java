@@ -52,9 +52,11 @@ public class UserLineActivity extends AppCompatActivity {
         List<String> arrivalList = Arrays.asList("도착지1", "도착지2", "도착지3", "도착지4", "도착지5", "도착지6", "도착지7",
                 "도착지8", "도착지9", "도착지10", "도착지11", "도착지12", "도착지13", "도착지14");
 
-        List<Integer> timeList = Arrays.asList(6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19);
+        //List<String> timeList = Arrays.asList("6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19");
+        int[] timeList = {6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19};
 
-        List<Integer> seatList = Arrays.asList(45, 25, 22, 32, 43, 12, 16, 23, 35, 5, 11, 28, 33, 40);
+        //List<String> seatList = Arrays.asList("45", "25", "22", "32", "43", "12", "16", "23", "35", "5", "11", "28", "33", "40");
+        int[] seatList = {45, 25, 22, 32, 43, 12, 16, 23, 35, 5, 11, 28, 33, 40};
 
         for(int i = 0; i < departureList.size(); i++) {
             Bus bus = new Bus();
@@ -63,8 +65,8 @@ public class UserLineActivity extends AppCompatActivity {
             bus.setStop2(stop2List.get(i));
             bus.setStop3(stop3List.get(i));
             bus.setArrival(arrivalList.get(i));
-            bus.setDepartureTime(timeList.get(i));
-            bus.setCapacity(seatList.get(i));
+            bus.setDepartureTime(timeList[i]);
+            bus.setCapacity(seatList[i]);
 
             adapter.addItem(bus);
         }

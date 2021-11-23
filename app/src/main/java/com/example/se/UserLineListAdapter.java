@@ -63,8 +63,8 @@ public class UserLineListAdapter extends RecyclerView.Adapter<UserLineListAdapte
             userStop2.setText(bus.getStop2());
             userStop3.setText(bus.getStop3());
             userArrival.setText(bus.getArrival());
-            userTime.setText(bus.getDepartureTime());
-            userSeat.setText(bus.getCapacity());
+            userTime.setText("출발 시각: " + bus.getDepartureTime() + "시");
+            userSeat.setText("잔여좌석: " + bus.getCapacity() + "석");
         }
 
     }
