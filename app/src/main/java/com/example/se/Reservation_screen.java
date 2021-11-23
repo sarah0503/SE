@@ -35,18 +35,18 @@ public class Reservation_screen extends AppCompatActivity {
         /****/
         Bus a = new Bus();
         a.setArrival("집");
-        a.setDapartureTime(8);
+        a.setDepartureTime(8);
         Bus b = new Bus();
         b.setArrival("학교");
-        b.setDapartureTime(10);
+        b.setDepartureTime(10);
        // for(int i = 0; i<count; i++){
             arrivals.add(a.getArrival());
            // places[place_count] = a.getArrival();
             //place_count++;
-            times.add(a.getDapartureTime());
+            times.add(a.getDepartureTime());
             arrivals.add(b.getArrival());
            // places[place_count] = b.getArrival();
-            times.add(b.getDapartureTime());
+            times.add(b.getDepartureTime());
 
       //  }
         ArrayAdapter<String> arrivalAdapter = new ArrayAdapter<String>(

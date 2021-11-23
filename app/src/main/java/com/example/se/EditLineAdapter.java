@@ -12,31 +12,28 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class EditLineAdapter extends RecyclerView.Adapter<EditLineAdapter.ViewHolder3> {
+public class EditLineAdapter extends RecyclerView.Adapter<EditLineAdapter.ViewHolder> {
 
     private ArrayList<Bus> busArrayList = new ArrayList<>();
     private Intent intent;
 
     @NonNull
     @Override
-    public ViewHolder3 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.line, parent, false);
-        return new ViewHolder3(view);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder3 holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.onBind(busArrayList.get(position));
 
-        //노선 선택했을 때 -> 노선 경유지 편집 화면으로 (EditingLine.java)
+        //노선 선택했을 때 -> 노선 경유지 편집 화면으로
         int pos = position;
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent = new Intent(view.getContext(), EditingLine.class);
-                view.getContext().startActivity(intent);
-                Toast.makeText(view.getContext(), "클릭 되었습니다.", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -50,11 +47,11 @@ public class EditLineAdapter extends RecyclerView.Adapter<EditLineAdapter.ViewHo
         busArrayList.add(bus);
     }
 
-    public class ViewHolder3 extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView departureTextView;
         private TextView arrivalTextView;
 
-        public ViewHolder3(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             departureTextView = itemView.findViewById(R.id.departureTextView);

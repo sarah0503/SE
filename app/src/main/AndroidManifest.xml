@@ -65,6 +65,41 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter></activity>
 
+        <activity android:name=".ManagerLNFActivity"
+            android:exported="true"
+            android:usesCleartextTraffic="true"><intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
+
+        <activity android:name=".AddLNF"
+            android:exported="true"
+            android:usesCleartextTraffic="true"><intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
+
+        <activity android:name=".UserLineActivity"
+            android:exported="true"
+            android:usesCleartextTraffic="true"><intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
+
+        <activity android:name=".UserNoticeActivity"
+            android:exported="true"
+            android:usesCleartextTraffic="true"><intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
+
+        <activity android:name=".UserLNFActivity"
+            android:exported="true"
+            android:usesCleartextTraffic="true"><intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
+
         <activity android:name=".Join"
             android:exported="true"
             android:usesCleartextTraffic="true"><intent-filter>

@@ -5,8 +5,35 @@ public class Bus {
     int id;
     String departure;
     String arrival;
-    String stops[];
-    int dapartureTime;
+    String stop1;
+    String stop2;
+    String stop3;
+
+    public String getStop1() {
+        return stop1;
+    }
+
+    public void setStop1(String stop1) {
+        this.stop1 = stop1;
+    }
+
+    public String getStop2() {
+        return stop2;
+    }
+
+    public void setStop2(String stop2) {
+        this.stop2 = stop2;
+    }
+
+    public String getStop3() {
+        return stop3;
+    }
+
+    public void setStop3(String stop3) {
+        this.stop3 = stop3;
+    }
+
+    int departureTime;
     int capacity =45;
     int waitingCount = 0;
     int currentCapacity = 0;
@@ -49,11 +76,11 @@ public class Bus {
     void setArrival(String arrival){this.arrival = arrival;}
     String getArrival() { return arrival; }
 
-    public void setDapartureTime(int dapartureTime) {
-        this.dapartureTime = dapartureTime;
+    public void setDepartureTime(int departureTime) {
+        this.departureTime = departureTime;
     }
 
-    public int getDapartureTime() {
-        return dapartureTime;
+    public int getDepartureTime() {
+        return departureTime;
     }
 }

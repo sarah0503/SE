@@ -14,19 +14,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class ManagerLNFListAdapter extends RecyclerView.Adapter<ManagerLNFListAdapter.ViewHolder5> {
+public class ManagerLNFListAdapter extends RecyclerView.Adapter<ManagerLNFListAdapter.ViewHolder> {
     private ArrayList<LNF> lnfArrayList = new ArrayList<>();
 
     @NonNull
     @Override
-    public ManagerLNFListAdapter.ViewHolder5 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ManagerLNFListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.lnf_checkbox, parent, false);
-        return new ManagerLNFListAdapter.ViewHolder5(view);
+        return new ManagerLNFListAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ManagerLNFListAdapter.ViewHolder5 holder, int position) {
+    public void onBindViewHolder(@NonNull ManagerLNFListAdapter.ViewHolder holder, int position) {
         holder.onBind(lnfArrayList.get(position));
 
         int pos = position;
@@ -58,11 +58,11 @@ public class ManagerLNFListAdapter extends RecyclerView.Adapter<ManagerLNFListAd
         lnfArrayList.add(lnf);
     }
 
-    public class ViewHolder5 extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView lnfTextView;
         private CheckBox lnfCheckBox;
 
-        public ViewHolder5(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             lnfTextView = itemView.findViewById(R.id.lnfTextView);

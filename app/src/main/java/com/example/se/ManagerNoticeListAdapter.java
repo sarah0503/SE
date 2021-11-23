@@ -14,20 +14,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class ManagerNoticeListAdapter extends RecyclerView.Adapter<ManagerNoticeListAdapter.ViewHolder4> {
+public class ManagerNoticeListAdapter extends RecyclerView.Adapter<ManagerNoticeListAdapter.ViewHolder> {
 
     private ArrayList<Notice> noticeArrayList = new ArrayList<>();
 
     @NonNull
     @Override
-    public ManagerNoticeListAdapter.ViewHolder4 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ManagerNoticeListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.notice_checkbox, parent, false);
-        return new ManagerNoticeListAdapter.ViewHolder4(view);
+        return new ManagerNoticeListAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ManagerNoticeListAdapter.ViewHolder4 holder, int position) {
+    public void onBindViewHolder(@NonNull ManagerNoticeListAdapter.ViewHolder holder, int position) {
         holder.onBind(noticeArrayList.get(position));
 
         int pos = position;
@@ -73,12 +73,12 @@ public class ManagerNoticeListAdapter extends RecyclerView.Adapter<ManagerNotice
         noticeArrayList.add(notice);
     }
 
-    public class ViewHolder4 extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView titleTextView;
         private TextView dateTextView;
         private CheckBox noticeCheckBox;
 
-        public ViewHolder4(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             titleTextView = itemView.findViewById(R.id.titleTextView);
