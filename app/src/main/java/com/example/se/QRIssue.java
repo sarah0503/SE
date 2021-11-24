@@ -46,7 +46,9 @@ public class QRIssue extends AppCompatActivity {
         qrImage = (ImageView) findViewById(R.id.qrImage);
         //String Userid = currentUser.getId();
         /***********DB**************/
+        //contents에 'busId' + ',' + 'userId' 이렇게 저장되어야 됨 (구분자 필요!)
         contents = "temp"; //여기 정보 저장해야함
+
         Bitmap bitmap = issueQR(contents);
         qrImage.setImageBitmap(bitmap);
     }
