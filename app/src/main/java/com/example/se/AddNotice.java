@@ -9,18 +9,12 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
 
 public class AddNotice extends AppCompatActivity {
 
     private Button noticeInputButton;
     private EditText inputTitleEditText;
     private EditText inputContentEditText;
-
-    Notice notice = new Notice();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
