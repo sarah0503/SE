@@ -37,10 +37,10 @@ public class QRCheck extends AppCompatActivity {
                 /***********DB**************/
                 //check에 true, false값 저장 (문서 참고)
 
-                if(check == true){
+                if(check){
                     Toast.makeText(this, "탑승이 확인되었습니다. " , Toast.LENGTH_LONG).show();
                 }
-                else (check == false){
+                else if (!check){
                     Toast.makeText(this, "예매 내역이 존재하지 않습니다. " , Toast.LENGTH_LONG).show();
                 }
 
