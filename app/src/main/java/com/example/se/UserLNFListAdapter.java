@@ -1,8 +1,11 @@
 package com.example.se;
 
+import android.app.Dialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,7 +16,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class UserLNFListAdapter extends RecyclerView.Adapter<UserLNFListAdapter.ViewHolder> {
+
     private ArrayList<LNF> lnfArrayList = new ArrayList<>();
+    private Dialog detailDialog;
+    private TextView title, explain;
+    private ImageView image;
+    private Button closeButton;
 
     @NonNull
     @Override
@@ -33,7 +41,28 @@ public class UserLNFListAdapter extends RecyclerView.Adapter<UserLNFListAdapter.
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                Toast.makeText(builder.getContext(), lnfArrayList.get(pos).getTitle() + " 선택됨", Toast.LENGTH_SHORT).show();
+
+                detailDialog = new Dialog(view.getContext());
+                detailDialog.setContentView(R.layout.lnf_detail);
+
+                title = detailDialog.findViewById(R.id.lnfTitle);
+                image = detailDialog.findViewById(R.id.lnfImage);
+                explain = detailDialog.findViewById(R.id.lnfExplain);
+
+                //lnfArrayList 저장된 내용 가져와서 dialog로 표시하기
+                title.setText("" + lnfArrayList.get(pos).getTitle());
+                //image.setImage...
+                explain.setText("" + lnfArrayList.get(pos).getExplain());
+
+                detailDialog.show();
+
+                closeButton = detailDialog.findViewById(R.id.lnfCloseButton);
+                closeButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        detailDialog.dismiss();
+                    }
+                });
             }
         });
     }

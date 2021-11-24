@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <EditText
+        android:id="@+id/lnfTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:hint="제목"
+        android:padding="10dp"/>
+
+    <ImageView
+        android:id="@+id/lnfImage"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:maxWidth="250dp"
+        android:maxHeight="250dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/ic_photo"/>
+
+    <EditText
+        android:id="@+id/lnfExplain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="설명"
+        android:layout_margin="30dp"
+        android:gravity="top"
+        android:background="@drawable/content_border"
+        android:padding="10dp"/>
+
+    <Button
+        android:id="@+id/lnfCloseButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:text="닫기"/>
+
+</LinearLayout>

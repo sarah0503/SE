@@ -1,11 +1,11 @@
 package com.example.se;
 
-import android.content.DialogInterface;
+import android.app.Dialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -16,6 +16,9 @@ import java.util.ArrayList;
 public class UserNoticeListAdapter extends RecyclerView.Adapter<UserNoticeListAdapter.ViewHolder> {
 
     private ArrayList<Notice> noticeArrayList = new ArrayList<>();
+    private Dialog detailDialog;
+    private TextView title, date, content;
+    private Button closeButton;
 
     @NonNull
     @Override
@@ -25,20 +28,43 @@ public class UserNoticeListAdapter extends RecyclerView.Adapter<UserNoticeListAd
         return new UserNoticeListAdapter.ViewHolder(view);
     }
 
+
+
     @Override
     public void onBindViewHolder(@NonNull UserNoticeListAdapter.ViewHolder holder, int position) {
         holder.onBind(noticeArrayList.get(position));
 
         int pos = position;
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() { //공지사항 누르면 내용 상세보기
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                Toast.makeText(builder.getContext(), noticeArrayList.get(pos).getTitle() + " - "
-                        + noticeArrayList.get(pos).getDate() + " 선택됨", Toast.LENGTH_SHORT).show();
+
+                detailDialog = new Dialog(view.getContext());
+                detailDialog.setContentView(R.layout.notice_detail);
+
+                title = detailDialog.findViewById(R.id.noticeTitle);
+                date = detailDialog.findViewById(R.id.noticeDate);
+                content = detailDialog.findViewById(R.id.noticeContent);
+
+                //noticeArrayList에 저장된 내용 가져와서 dialog로 표시하기
+                title.setText("" + noticeArrayList.get(pos).getTitle());
+                date.setText("" + noticeArrayList.get(pos).getDate());
+                content.setText("" + noticeArrayList.get(pos).getContent());
+
+                detailDialog.show();
+
+                closeButton = detailDialog.findViewById(R.id.noticeCloseButton);
+                closeButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        detailDialog.dismiss();
+                    }
+                });
             }
         });
+
     }
 
     @Override
