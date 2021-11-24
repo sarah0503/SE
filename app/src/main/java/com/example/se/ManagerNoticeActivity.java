@@ -59,7 +59,10 @@ public class ManagerNoticeActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
-    private void getData() { //임의 데이터
+    private void getData() {
+
+        /******************************임의 데이터******************************/
+
         List<String> titleList = Arrays.asList("오늘의 공지사항", "제목2", "제목3", "제목4", "제목5", "제목6", "제목7",
                 "제목8", "제목9", "제목10", "제목11", "제목12");
 
@@ -80,6 +83,9 @@ public class ManagerNoticeActivity extends AppCompatActivity {
                 "내용10++-+--+-+-+110101011010+-+-+-+-+-+--+-+6554464548561351846651",
                 "내용11내용내용내용내용내용내용낸용내용내용내용ㅇㅇㅇㅇㅇㅇㅇㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ",
                 "내용12~~~~~~~~12~~~~~~~~~~`%~~~~~~``^~~~~~`#$%##%^#$%@#$!@#~!@#!@#$");
+
+        /************************************************************************/
+
 
         for(int i = 0; i < titleList.size(); i++) {
             Notice notice = new Notice();

@@ -32,6 +32,15 @@ public class ManagerLineListAdapter extends RecyclerView.Adapter<ManagerLineList
 
         int pos = position;
 
+        // 변경 기능
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        // 삭제 기능
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,7 +106,7 @@ public class ManagerLineListAdapter extends RecyclerView.Adapter<ManagerLineList
 
         }
 
-        void onBind(Bus bus) {
+        void onBind(Bus bus) { // textView의 text 설정
             departureTextView.setText(bus.getDeparture());
             stop1TextView.setText(bus.getStop1());
             stop2TextView.setText(bus.getStop2());

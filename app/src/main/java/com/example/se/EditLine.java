@@ -1,75 +1,58 @@
 package com.example.se;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.Arrays;
-import java.util.List;
 
 public class EditLine extends AppCompatActivity {
 
-    private EditLineAdapter adapter;
-    private Button storeButton;
+    private Bus bus;
+    //private ArrayList departure, stop1, stop2, stop3, arrival;
+    //private ArrayAdapter<String> departureAdapter, stop1Adapter, stop2Adaptor, stop3Adaptor, arrivalAdaptor;
+    private EditText editDeparture, editStop1, editStop2, editStop3, editArrival, editTime;
+    private Button cancelButton, addButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.edit_route_screen);
-        storeButton = findViewById(R.id.storeButton);
+        setContentView(R.layout.edit_line_screen);
 
-        storeButton.setOnClickListener(new View.OnClickListener() {
+
+        editDeparture = findViewById(R.id.editDeparture);
+        editStop1 = findViewById(R.id.editStop1);
+        editStop2 = findViewById(R.id.editStop2);
+        editStop3 = findViewById(R.id.editStop3);
+        editArrival = findViewById(R.id.editArrival);
+        editTime = findViewById(R.id.editTime);
+
+        cancelButton = findViewById(R.id.editCancel);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-                //저장하기
-
-
-                onClickBack(view);
+                finish();
             }
         });
 
-        init();
+        addButton = findViewById(R.id.editAdd);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bus = new Bus();
+                bus.setDeparture(editDeparture.getText().toString());
+                bus.setStop1(editStop1.getText().toString());
+                bus.setStop2(editStop2.getText().toString());
+                bus.setStop3(editStop3.getText().toString());
+                bus.setArrival(editArrival.getText().toString());
+                bus.setDepartureTime(Integer.parseInt(editTime.getText().toString()));
 
-        getData();
-    }
+                //수정 내용 저장하기
+            }
+        });
 
-    private void onClickBack(View v) {
-        finish();
-    }
-
-    private void init() {
-        RecyclerView recyclerView = findViewById(R.id.editRecyclerView);
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(linearLayoutManager);
-
-        adapter = new EditLineAdapter();
-        recyclerView.setAdapter(adapter);
-    }
-
-    private void getData() { //임의 데이터
-        List<String> departureList = Arrays.asList("출발지1", "출발지2", "출발지3", "출발지4", "출발지5", "출발지6", "출발지7",
-                "출발지8", "출발지9", "출발지10", "출발지11", "출발지12");
-
-        List<String> arrivalList = Arrays.asList("도착지1", "도착지2", "도착지3", "도착지4", "도착지5", "도착지6", "도착지7",
-                "도착지8", "도착지9", "도착지10", "도착지11", "도착지12");
-
-        for(int i = 0; i < departureList.size(); i++) {
-            Bus bus = new Bus();
-            bus.setDeparture(departureList.get(i));
-            bus.setArrival(arrivalList.get(i));
-
-            adapter.addItem(bus);
-        }
-
-        adapter.notifyDataSetChanged();
     }
 }

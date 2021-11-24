@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -43,7 +42,7 @@ public class UserLNFListAdapter extends RecyclerView.Adapter<UserLNFListAdapter.
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
 
                 detailDialog = new Dialog(view.getContext());
-                detailDialog.setContentView(R.layout.lnf_detail);
+                detailDialog.setContentView(R.layout.user_lnf_detail);
 
                 title = detailDialog.findViewById(R.id.lnfTitle);
                 image = detailDialog.findViewById(R.id.lnfImage);
