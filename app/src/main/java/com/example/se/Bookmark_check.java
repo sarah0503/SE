@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Bookmark_check extends AppCompatActivity {
+    //사용자가 즐겨찾기한 항목의 정보를 불러옴
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
