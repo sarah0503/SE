@@ -26,13 +26,15 @@ public class Reservation_screen extends AppCompatActivity {
         departureSpinner = (Spinner) findViewById(R.id.departureSpinner);
         arrivalSpinner = (Spinner) findViewById(R.id.arrivalSpinner);
         timeSpinner = (Spinner) findViewById(R.id.timeSpinner);
+        /***********DB**************/
         ArrayList<String> arrivals = new ArrayList <String> ();
         ArrayList<String> departures = new ArrayList <String> ();
         //String places[] = new String[100];
         int place_count = 0;
         ArrayList<Integer> times = new ArrayList <Integer>();
         int count = Bus.count;
-        /****/
+
+        /**임시**/
         Bus a = new Bus();
         a.setArrival("집");
         a.setDepartureTime(8);
@@ -46,8 +48,13 @@ public class Reservation_screen extends AppCompatActivity {
             times.add(a.getDepartureTime());
             arrivals.add(b.getArrival());
            // places[place_count] = b.getArrival();
+<<<<<<< Updated upstream
             times.add(b.getDepartureTime());
 
+=======
+            times.add(b.getDapartureTime());
+        /**임시**/
+>>>>>>> Stashed changes
       //  }
         ArrayAdapter<String> arrivalAdapter = new ArrayAdapter<String>(
                 getApplicationContext(),
@@ -70,8 +77,6 @@ public class Reservation_screen extends AppCompatActivity {
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //버스아이디 찾아서 버스 객체 찾기
-                Bus currentBus = new Bus();
 
                 int time;
                 String arrival;
@@ -79,6 +84,10 @@ public class Reservation_screen extends AppCompatActivity {
                 arrival = arrivalSpinner.getSelectedItem().toString();
                 departure = departureSpinner.getSelectedItem().toString();
                 time = Integer.parseInt(timeSpinner.getSelectedItem().toString());
+
+                /***********DB**************/
+                //버스아이디 찾아서 버스 객체 찾기
+                Bus currentBus = new Bus();
 
                 if(currentBus.getCurrentCapacity() >= currentBus.getCapacity()){
 
