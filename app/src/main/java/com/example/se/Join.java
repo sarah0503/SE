@@ -42,10 +42,9 @@ public class Join extends AppCompatActivity {
         btn_numck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                String loadId = String.valueOf(user.getId());
                 String number;
                 number = et_number.getText().toString();
+                String loadId = String.valueOf(user.getId());           //DB에서 number와 동일한 ID가 있으면 로드
 
                 if (number.equals("")){
                     Toast.makeText(getApplicationContext(), "입력된 값이 없습니다.", Toast.LENGTH_SHORT).show();
@@ -55,6 +54,7 @@ public class Join extends AppCompatActivity {
                 }
                 else {
                     Toast.makeText(getApplicationContext(), "확인되었습니다.", Toast.LENGTH_SHORT).show();
+                    //해당 학번(ID)을 저장해야함
                 }
             }
         });
@@ -74,6 +74,7 @@ public class Join extends AppCompatActivity {
                 }
                 else {
                     Toast.makeText(getApplicationContext(), "확인되었습니다.", Toast.LENGTH_SHORT).show();
+                    //해당 email 을 저장해야함
                 }
             }
         });
@@ -102,12 +103,14 @@ public class Join extends AppCompatActivity {
                 else if (!(btn_emailck.isClickable())){
                     Toast.makeText(getApplicationContext(), "이메일 중복확인을 하세요.", Toast.LENGTH_SHORT).show();}
                 else {
+                    //학번(ID), Password, 이름, email 을 저장해야함
                     Toast.makeText(getApplicationContext(), "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();}
             }
         });
         btn_cancle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "회원가입이 취소되었습니다.", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(), Login.class);
                 startActivity(intent);
             }
