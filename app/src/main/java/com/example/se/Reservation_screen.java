@@ -48,11 +48,9 @@ public class Reservation_screen extends AppCompatActivity {
             times.add(a.getDepartureTime());
             arrivals.add(b.getArrival());
            // places[place_count] = b.getArrival();
-
             times.add(b.getDepartureTime());
-
         /**임시**/
-
+      //  }
         ArrayAdapter<String> arrivalAdapter = new ArrayAdapter<String>(
                 getApplicationContext(),
                 R.layout.support_simple_spinner_dropdown_item,
@@ -104,6 +102,7 @@ public class Reservation_screen extends AppCompatActivity {
                             MainActivity.waitings[Waiting.count-1].setUserId(MainActivity.currentUser.getUserID());
                             //    currentUser.addWaiting(MainActivity.waitings[Waiting.count-1]);
                             String waitingCount = Integer.toString(currentBus.getWaitingCount());
+                            MainActivity.waitings[Waiting.count-1].setWaitingCount(Integer.parseInt(waitingCount));
                             Toast.makeText(getApplicationContext(), "대기번호 :  " + waitingCount,Toast.LENGTH_LONG).show();
                         }
                     });

@@ -6,12 +6,21 @@ public class Waiting {
     private int userId;
     private int waitingId;
     private int time;
+    private int waitingCount;
     private String arrival;
     private String departure;
 
     Waiting(){
         waitingId = count;
         count ++;
+    }
+
+    public void setWaitingCount(int waitingCount) {
+        this.waitingCount = waitingCount;
+    }
+
+    public int getWaitingCount() {
+        return waitingCount;
     }
 
     public void setBusId(int busId) {
@@ -58,4 +67,3 @@ public class Waiting {
         this.departure = departure;
     }
 }
-

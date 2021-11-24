@@ -57,6 +57,7 @@ public class Bus {
     void setCapacity(int capacity){
         this.capacity = capacity;
     }
+
     int getCapacity(){
         return capacity;
     }
@@ -72,8 +73,11 @@ public class Bus {
     void setDeparture(String departure){
         this.departure = departure;
     }
+
     String getDeparture(){return departure;}
+
     void setArrival(String arrival){this.arrival = arrival;}
+
     String getArrival() { return arrival; }
 
     public void setDepartureTime(int departureTime) {
