@@ -1,5 +1,6 @@
 package com.example.se;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -24,6 +25,13 @@ public class Information_screen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+            }
+        });
+        modifyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ModifyInformation.class);
+                startActivity(intent);
             }
         });
     }

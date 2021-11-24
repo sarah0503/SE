@@ -37,6 +37,47 @@ public class Join extends AppCompatActivity {
         btn_numck = (Button)findViewById(R.id.btn_numck);       //학번 확인 버튼
         btn_emailck = (Button)findViewById(R.id.btn_emailck);   //email 중복확인 버튼
 
+        User user = new User();     //이거를 User에서 불러오는게 맞나?
+
+        btn_numck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String loadId = String.valueOf(user.getId());
+                String number;
+                number = et_number.getText().toString();
+
+                if (number.equals("")){
+                    Toast.makeText(getApplicationContext(), "입력된 값이 없습니다.", Toast.LENGTH_SHORT).show();
+                }
+                else if (et_number.equals(loadId)){
+                    Toast.makeText(getApplicationContext(), "이미 등록된 사용자입니다.", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "확인되었습니다.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        btn_emailck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String loademail = String.valueOf(user.getEmail());
+                String email;
+                email = et_email.getText().toString();
+
+                if (email.equals("")){
+                    Toast.makeText(getApplicationContext(), "입력된 값이 없습니다.", Toast.LENGTH_SHORT).show();
+                }
+                else if (email.equals(loademail)){
+                    Toast.makeText(getApplicationContext(), "이미 사용중인 이메일입니다.", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "확인되었습니다.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

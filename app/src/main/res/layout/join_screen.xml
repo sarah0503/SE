@@ -36,12 +36,11 @@
 
                 <EditText
                     android:id="@+id/et_number"
-                    android:layout_width="250dp"
-                    android:layout_height="48dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="학번"
-                    android:inputType="textPersonName"
-                    tools:ignore="MissingConstraints" />
+                    android:inputType="number"
+                    android:hint="학번"/>
 
                 <Button
                     android:id="@+id/btn_numck"

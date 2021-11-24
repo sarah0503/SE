@@ -58,4 +58,3 @@ public class Waiting {
         this.departure = departure;
     }
 }
-
