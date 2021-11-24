@@ -28,10 +28,35 @@ public class Home_screen  extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         reservationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Reservation_screen.class);
+                startActivity(intent);
+            }
+        });
+
+        lineButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), UserLineActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        noticeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), UserNoticeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LNFButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), UserLNFActivity.class);
                 startActivity(intent);
             }
         });

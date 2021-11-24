@@ -3,56 +3,23 @@ package com.example.se;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ManagerLineActivity extends AppCompatActivity {
-
-    private ManagerLineListAdapter adapter;
-    private Button addButton;
-    private Button editButton;
-    private Button deleteButton;
+public class UserLineActivity extends AppCompatActivity {
+    private UserLineListAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.line_screen);
-        addButton = findViewById(R.id.lineAddButton);
-        editButton = findViewById(R.id.lineEditButton);
-        deleteButton = findViewById(R.id.lineDeleteButton);
-
-        addButton.setOnClickListener(new View.OnClickListener() { //노선 추가 버튼을 눌렀을 때
-            @Override
-            public void onClick(View v) {
-                //spinner
-            }
-        });
-
-        editButton.setOnClickListener(new View.OnClickListener() { //노선 변경 버튼을 눌렀을 때
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), EditLine.class);
-                startActivity(intent);
-            }
-        });
-
-        deleteButton.setOnClickListener(new View.OnClickListener() { //노선 삭제 버튼을 눌렀을 때
-            @Override
-            public void onClick(View view) {
-                //노선 선택 삭제
-            }
-        });
+        setContentView(R.layout.user_line_screen);
 
         init();
 
@@ -60,12 +27,12 @@ public class ManagerLineActivity extends AppCompatActivity {
     }
 
     private void init() {
-        RecyclerView recyclerView = findViewById(R.id.manageRecyclerView);
+        RecyclerView recyclerView = findViewById(R.id.userLineRecyclerView);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        adapter = new ManagerLineListAdapter();
+        adapter = new UserLineListAdapter();
         recyclerView.setAdapter(adapter);
     }
 
@@ -85,6 +52,12 @@ public class ManagerLineActivity extends AppCompatActivity {
         List<String> arrivalList = Arrays.asList("도착지1", "도착지2", "도착지3", "도착지4", "도착지5", "도착지6", "도착지7",
                 "도착지8", "도착지9", "도착지10", "도착지11", "도착지12", "도착지13", "도착지14");
 
+        //List<String> timeList = Arrays.asList("6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19");
+        int[] timeList = {6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19};
+
+        //List<String> seatList = Arrays.asList("45", "25", "22", "32", "43", "12", "16", "23", "35", "5", "11", "28", "33", "40");
+        int[] seatList = {45, 25, 22, 32, 43, 12, 16, 23, 35, 5, 11, 28, 33, 40};
+
         for(int i = 0; i < departureList.size(); i++) {
             Bus bus = new Bus();
             bus.setDeparture(departureList.get(i));
@@ -92,6 +65,8 @@ public class ManagerLineActivity extends AppCompatActivity {
             bus.setStop2(stop2List.get(i));
             bus.setStop3(stop3List.get(i));
             bus.setArrival(arrivalList.get(i));
+            bus.setDepartureTime(timeList[i]);
+            bus.setCapacity(seatList[i]);
 
             adapter.addItem(bus);
         }

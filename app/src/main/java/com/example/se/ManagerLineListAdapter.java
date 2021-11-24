@@ -14,20 +14,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class ManagerLineListAdapter extends RecyclerView.Adapter<ManagerLineListAdapter.ViewHolder2> {
+public class ManagerLineListAdapter extends RecyclerView.Adapter<ManagerLineListAdapter.ViewHolder> {
 
     private ArrayList<Bus> busArrayList = new ArrayList<>();
 
     @NonNull
     @Override
-    public ManagerLineListAdapter.ViewHolder2 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ManagerLineListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.line_checkbox, parent, false);
-        return new ManagerLineListAdapter.ViewHolder2(view);
+        return new ManagerLineListAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ManagerLineListAdapter.ViewHolder2 holder, int position) {
+    public void onBindViewHolder(@NonNull ManagerLineListAdapter.ViewHolder holder, int position) {
         holder.onBind(busArrayList.get(position));
 
         int pos = position;
@@ -52,7 +52,13 @@ public class ManagerLineListAdapter extends RecyclerView.Adapter<ManagerLineList
                         Toast.makeText(builder.getContext(), "노선이 삭제되었습니다.", Toast.LENGTH_LONG).show();
                     }
                 });
-                builder.setNeutralButton("취소", null);
+                builder.setNeutralButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        holder.checkBox.setChecked(false);
+                        Toast.makeText(builder.getContext(), "취소되었습니다.", Toast.LENGTH_LONG).show();
+                    }
+                });
                 builder.create().show();
             }
         });
@@ -63,27 +69,40 @@ public class ManagerLineListAdapter extends RecyclerView.Adapter<ManagerLineList
         return busArrayList.size();
     }
 
+    public ArrayList getList() {
+        return busArrayList;
+    }
+
     void addItem(Bus bus) {
         busArrayList.add(bus);
     }
 
-    class ViewHolder2 extends RecyclerView.ViewHolder {
-        private TextView departureTextView_cb;
-        private TextView arrivalTextView_cb;
+    class ViewHolder extends RecyclerView.ViewHolder {
+        private TextView departureTextView;
+        private TextView arrivalTextView;
+        private TextView stop1TextView;
+        private TextView stop2TextView;
+        private TextView stop3TextView;
         private CheckBox checkBox;
 
-        ViewHolder2(@NonNull View itemView){
+        ViewHolder(@NonNull View itemView){
             super(itemView);
 
-            departureTextView_cb = itemView.findViewById(R.id.departureTextView_cb);
-            arrivalTextView_cb = itemView.findViewById(R.id.arrivalTextView_cb);
+            departureTextView = itemView.findViewById(R.id.departureTextView);
+            arrivalTextView = itemView.findViewById(R.id.arrivalTextView);
+            stop1TextView = itemView.findViewById(R.id.stop1TextView);
+            stop2TextView = itemView.findViewById(R.id.stop2TextView);
+            stop3TextView = itemView.findViewById(R.id.stop3TextView);
             checkBox = itemView.findViewById(R.id.checkBox);
 
         }
 
         void onBind(Bus bus) {
-            departureTextView_cb.setText(bus.getDeparture());
-            arrivalTextView_cb.setText(bus.getArrival());
+            departureTextView.setText(bus.getDeparture());
+            stop1TextView.setText(bus.getStop1());
+            stop2TextView.setText(bus.getStop2());
+            stop3TextView.setText(bus.getStop3());
+            arrivalTextView.setText(bus.getArrival());
         }
 
     }
