@@ -72,6 +72,12 @@
             android:layout_height="wrap_content"
             android:text="회원 탈퇴"
             android:id="@+id/withdrawButton"/>
+
+        <Button
+            android:id="@+id/userinfoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="앱 정보" />
     </LinearLayout>
 
     <LinearLayout

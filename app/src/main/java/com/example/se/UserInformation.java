@@ -1,7 +1,7 @@
 package com.example.se;
 
-public class Information {
-    int userID;
+public class UserInformation {
+    int userID;             // 사용자의 ID에 따라 저장된 정보인 ID, Email, Penalty, QR정보를 불러와야함
     String userEmail;
     int penaltyCount;
     String myQR;
