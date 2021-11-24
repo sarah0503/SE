@@ -32,33 +32,35 @@ public class AddLNF extends AppCompatActivity {
         lnfExplain = findViewById(R.id.lnfExplainEditText);
         lnfSaveButton = findViewById(R.id.lnfSaveButton);
 
-        // 입력한 제목 set
-        lnf.setTitle(lnfTitle.getText().toString());
-
         tedPermission();
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                //이미지 추가하기
+                // 갤러리에서 이미지 가져와서 추가하기
 
             }
         });
 
-        // 입력한 설명 set
-        lnf.setExplain(lnfExplain.getText().toString());
-
         lnfSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //저장하기
+                lnf.setTitle(lnfTitle.getText().toString());
+                //lnf.setImage(imageView.getImage....)
+                lnf.setExplain(lnfExplain.getText().toString());
+
+
+
+                // 입력한 내용 저장하기
+
+
 
                 finish();   //저장하기 누르면 저장 후 이전 화면으로 돌아감
             }
         });
     }
 
-    private void tedPermission() {
+    private void tedPermission() { // 갤러리 권한 허용
 
     }
 }

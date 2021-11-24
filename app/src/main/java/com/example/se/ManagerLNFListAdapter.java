@@ -36,12 +36,26 @@ public class ManagerLNFListAdapter extends RecyclerView.Adapter<ManagerLNFListAd
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                 builder.setTitle("Confirm");
-                builder.setMessage("공지사항을 삭제하시겠습니까?");
-                builder.setPositiveButton("닫기", new DialogInterface.OnClickListener() {
+                builder.setMessage("게시물을 삭제하시겠습니까?");
+                builder.setPositiveButton("삭제", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
-                        //상세내용
-                        Toast.makeText(builder.getContext(), "상세보기", Toast.LENGTH_LONG).show();
+                        lnfArrayList.remove(pos);       //리스트 항목 삭제됨
+                        notifyItemRemoved(pos);
+                        notifyItemRangeChanged(pos, lnfArrayList.size());
+
+
+                        // 게시물 삭제하기
+
+
+                        Toast.makeText(builder.getContext(), "공지사항이 삭제되었습니다.", Toast.LENGTH_LONG).show();
+                    }
+                });
+                builder.setNeutralButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        holder.lnfCheckBox.setChecked(false);
+                        Toast.makeText(builder.getContext(), "취소되었습니다.", Toast.LENGTH_LONG).show();
                     }
                 });
                 builder.create().show();

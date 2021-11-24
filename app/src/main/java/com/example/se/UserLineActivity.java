@@ -38,7 +38,10 @@ public class UserLineActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
-    private void getData() { //임의 데이터
+    private void getData() {
+
+        /******************************임의 데이터******************************/
+
         List<String> departureList = Arrays.asList("영남대역", "출발지2", "출발지3", "출발지4", "출발지5", "출발지6", "출발지7",
                 "출발지8", "출발지9", "출발지10", "출발지11", "출발지12", "출발지13", "출발지14");
 
@@ -59,6 +62,9 @@ public class UserLineActivity extends AppCompatActivity {
 
         //List<String> seatList = Arrays.asList("45", "25", "22", "32", "43", "12", "16", "23", "35", "5", "11", "28", "33", "40");
         int[] seatList = {45, 25, 22, 32, 43, 12, 16, 23, 35, 5, 11, 28, 33, 40};
+
+        /******************************임의 데이터******************************/
+
 
         for(int i = 0; i < departureList.size(); i++) {
             Bus bus = new Bus();

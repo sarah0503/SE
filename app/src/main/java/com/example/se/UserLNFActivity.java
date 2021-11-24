@@ -36,7 +36,10 @@ public class UserLNFActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
-    private void getData() { //임의 데이터
+    private void getData() {
+
+        /******************************임의 데이터******************************/
+
         List<String> titleList = Arrays.asList("아이패드 분실물", "제목2", "제목3", "제목4", "제목5", "제목6", "제목7",
                 "제목8", "제목9", "제목10", "제목11", "제목12");
 
@@ -57,6 +60,9 @@ public class UserLNFActivity extends AppCompatActivity {
                 "ytktskyhk \nkjfdsaeojfo \n kjdfpajkwjf \nskjaiofjkejfio",
                 "dtk,ltkajojf \nkjfdsaeojfo \n kjdfpajkwjf \nskjaiofjkejfio",
                 "tllkjiluhujky \nkjfdsaeojfo \n kjdfpajkwjf \nskjaiofjkejfio");
+
+        /******************************임의 데이터******************************/
+
 
         for(int i = 0; i < titleList.size(); i++) {
             LNF lnf = new LNF();

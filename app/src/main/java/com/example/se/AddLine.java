@@ -1,60 +1,41 @@
 package com.example.se;
 
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.dialog.InsetDialogOnTouchListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class AddLine extends AppCompatActivity { //extends Dialog
-    private Context context;
+public class AddLine extends AppCompatActivity {
 
     private Spinner lineAddSpinner, timeAddSpinner;
     private ArrayList<String> lineList, timeList;
     private ArrayAdapter<String> lineAdapter, timeAdapter;
 
-    private InsetDialogOnTouchListener listener;
-    private TextView addTitleTextView;
     private Button cancelButton, addButton;
-
-    //public AddLine(@NonNull Context context) {
-    //    super(context);
-    //    this.context = context;
-    //}
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_line_screen);
 
-        addTitleTextView = findViewById(R.id.addTitleTextView);
         cancelButton = findViewById(R.id.cancelButton);
         addButton = findViewById(R.id.addButton);
 
         lineList = new ArrayList<>();
-        //임의 데이터
+
         lineList.add("영남대-임당역-대공원역-반월당역-경대병원역");
         lineList.add("문양역-다사역-죽전역-반고개역-영남대역");
-        //
+        //addLineList(lineList);
+
         lineAddSpinner = (Spinner) findViewById(R.id.lineAddSpinner);
         lineAdapter = new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_spinner_dropdown_item,lineList);
         lineAddSpinner.setAdapter(lineAdapter);
@@ -62,7 +43,7 @@ public class AddLine extends AppCompatActivity { //extends Dialog
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 //노선 선택했을 때
-                Toast.makeText(getApplicationContext(),lineList.get(i)+" 선택", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),lineList.get(i)+" 선택", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -76,17 +57,19 @@ public class AddLine extends AppCompatActivity { //extends Dialog
         });
 
         timeList = new ArrayList<>();
-        //임의 데이터
+
         timeList.add("8");
         timeList.add("10");
-        //
+        //addTimeList(timeList);
+
         timeAddSpinner = (Spinner) findViewById(R.id.timeAddSpinner);
         timeAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, timeList);
+        timeAddSpinner.setAdapter(timeAdapter);
         timeAddSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 //시간 선택했을 때
-                Toast.makeText(getApplicationContext(),timeList.get(i)+" 선택", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),timeList.get(i)+" 선택", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -98,5 +81,60 @@ public class AddLine extends AppCompatActivity { //extends Dialog
                 builder.create().show();
             }
         });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //리스트에 추가
+            }
+        });
+    }
+
+    void addLineList(ArrayList list){
+
+        /****************************** DB 데이터 불러오기 ******************************/
+
+        List<String> departureList = Arrays.asList( );
+
+        List<String> stop1List = Arrays.asList( );
+
+        List<String> stop2List = Arrays.asList( );
+
+        List<String> stop3List = Arrays.asList( );
+
+        List<String> arrivalList = Arrays.asList( );
+
+        for(int i = 0; i < list.size(); i++) {
+            /*
+
+            list.add(departureList.get(i) + "-" + stop1List.get(i) + "-" + stop2List.get(i) + "-"
+             + stop3List.get(i) + "-" + arrivalList.get(i) + "-");
+
+            */
+        }
+    }
+
+    void addTimeList(ArrayList list){
+
+        /****************************** DB 데이터 불러오기 ******************************/
+
+        int[] timeList = { };
+
+        //int[] seatList = { };
+
+        for(int i = 0; i < list.size(); i++) {
+            /*
+
+            list.add(timeList.get(i) + "시");
+
+            */
+        }
     }
 }
