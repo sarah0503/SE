@@ -23,12 +23,17 @@
         <entry key="..\:/Users/leehb/Documents/GitHub/SE/app/src/main/res/layout/resevation_screen.xml" value="0.25364583333333335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.13728470111448834" />
         <entry key="app/src/main/res/layout/home_screen.xml" value="0.22010869565217392" />
+        <entry key="app/src/main/res/layout/information_screen.xml" value="0.20244565217391305" />
+        <entry key="app/src/main/res/layout/join_screen.xml" value="0.1693840579710145" />
         <entry key="app/src/main/res/layout/line_checkbox.xml" value="0.22010869565217392" />
         <entry key="app/src/main/res/layout/login_screen.xml" value="0.22010869565217392" />
         <entry key="app/src/main/res/layout/manager_home_screen.xml" value="0.13043478260869565" />
+        <entry key="app/src/main/res/layout/modify_info_screen.xml" value="0.20244565217391305" />
+        <entry key="app/src/main/res/layout/reservation_check.xml" value="0.20244565217391305" />
         <entry key="app/src/main/res/layout/reservation_check_screen.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/reservation_screen.xml" value="0.22010869565217392" />
         <entry key="app/src/main/res/layout/resevation_screen.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/user_line.xml" value="0.20244565217391305" />
       </map>
     </option>
   </component>
