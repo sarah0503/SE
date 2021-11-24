@@ -48,14 +48,11 @@ public class Reservation_screen extends AppCompatActivity {
             times.add(a.getDepartureTime());
             arrivals.add(b.getArrival());
            // places[place_count] = b.getArrival();
-<<<<<<< Updated upstream
+
             times.add(b.getDepartureTime());
 
-=======
-            times.add(b.getDapartureTime());
         /**임시**/
->>>>>>> Stashed changes
-      //  }
+
         ArrayAdapter<String> arrivalAdapter = new ArrayAdapter<String>(
                 getApplicationContext(),
                 R.layout.support_simple_spinner_dropdown_item,
