@@ -97,12 +97,20 @@ public class Reservation_screen extends AppCompatActivity {
                             MainActivity.waitings[Waiting.count-1].setTime(time);
                             MainActivity.waitings[Waiting.count-1].setArrival(arrival);
                             MainActivity.waitings[Waiting.count-1].setDeparture(departure); **/
+
+                            String waitingCount = Integer.toString(currentBus.getWaitingCount());
+                            MainActivity.waitings[Waiting.count-1].setWaitingCount(Integer.parseInt(waitingCount));
+
+                            /***********DB**************/
+                            //디비에 대기 정보 저장
+
+                            /**디비쓰면 얘네 필요 없을수도,,**/
                             MainActivity.waitings[Waiting.count-1].setBusId(currentBus.id);
                             currentBus.increaseWaitingCount();
                             MainActivity.waitings[Waiting.count-1].setUserId(MainActivity.currentUser.getUserID());
-                            //    currentUser.addWaiting(MainActivity.waitings[Waiting.count-1]);
-                            String waitingCount = Integer.toString(currentBus.getWaitingCount());
-                            MainActivity.waitings[Waiting.count-1].setWaitingCount(Integer.parseInt(waitingCount));
+
+
+
                             Toast.makeText(getApplicationContext(), "대기번호 :  " + waitingCount,Toast.LENGTH_LONG).show();
                         }
                     });
@@ -123,9 +131,13 @@ public class Reservation_screen extends AppCompatActivity {
                     MainActivity.reservations[Reservation.count-1].setArrival(arrival);
                     MainActivity.reservations[Reservation.count-1].setDeparture(departure);
                     MainActivity.reservations[Reservation.count-1].setTime(time);        **/
+
+                    /***********DB**************/
+                    //디비에 예매 정보 저장
+
+                    /**디비쓰면 얘네 필요 없을수도,,**/
                     MainActivity.reservations[Reservation.count-1].setBusId(currentBus.id);
                     MainActivity.reservations[Reservation.count-1].setUserId(MainActivity.currentUser.getUserID());
-                    //  currentUser.addReservation(MainActivity.reservations[Reservation.count-1]);
                     currentBus.increaseCurrentCapacity();
 
                     AlertDialog.Builder reservationDialog = new AlertDialog.Builder(Reservation_screen.this);

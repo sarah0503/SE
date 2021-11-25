@@ -49,12 +49,15 @@
         <entry key="..\:/Users/leehb/Documents/GitHub/SE/app/src/main/res/layout/user_notice_screen.xml" value="0.25364583333333335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.13728470111448834" />
         <entry key="app/src/main/res/layout/home_screen.xml" value="0.22010869565217392" />
+        <entry key="app/src/main/res/layout/information_screen.xml" value="0.24081269239614922" />
         <entry key="app/src/main/res/layout/line_checkbox.xml" value="0.22010869565217392" />
         <entry key="app/src/main/res/layout/login_screen.xml" value="0.22010869565217392" />
         <entry key="app/src/main/res/layout/manager_home_screen.xml" value="0.13043478260869565" />
+        <entry key="app/src/main/res/layout/reservation_check.xml" value="0.14583333333333334" />
         <entry key="app/src/main/res/layout/reservation_check_screen.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/reservation_screen.xml" value="0.22010869565217392" />
         <entry key="app/src/main/res/layout/resevation_screen.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/waiting_screen.xml" value="0.14583333333333334" />
       </map>
     </option>
   </component>
