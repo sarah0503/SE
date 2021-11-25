@@ -177,7 +177,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".UserInformation_screen"
+        <activity android:name=".UserInformationActivity"
             android:exported="true"
             android:usesCleartextTraffic="true">
             <intent-filter>

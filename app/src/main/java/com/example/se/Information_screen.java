@@ -38,7 +38,7 @@ public class Information_screen extends AppCompatActivity {
         userinfoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), UserInformation_screen.class);
+                Intent intent = new Intent(getApplicationContext(), UserInformationActivity.class);
                 startActivity(intent);
             }
         });
