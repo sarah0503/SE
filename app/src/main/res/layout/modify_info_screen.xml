@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center">
@@ -8,7 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="38dp">
 
         <TextView
             android:id="@+id/modifyMain"
@@ -92,8 +95,7 @@
             <TableRow
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="20dp"
-                >
+                android:layout_marginBottom="20dp">
 
                 <TextView
                     android:id="@+id/modifyEmail"
@@ -109,6 +111,14 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="textEmailAddress" />
+
+                <Button
+                    android:id="@+id/btn_modiemailck"
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    android:foregroundGravity="center"
+                    android:text="확인"
+                    android:textSize="10dp" />
             </TableRow>
         </TableLayout>
 
@@ -122,11 +132,11 @@
                 android:layout_marginTop="10dp">
 
                 <Button
-                    android:id="@+id/btn_moidifyComplete"
+                    android:id="@+id/btn_modifyComplete"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="완료"
-                    android:layout_marginRight="10dp"/>
+                    android:layout_marginRight="10dp"
+                    android:text="완료" />
 
                 <Button
                     android:id="@+id/btn_modifyCancle"

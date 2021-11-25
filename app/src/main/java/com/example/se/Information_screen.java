@@ -10,13 +10,14 @@ import android.view.View;
 import android.widget.*;
 
 public class Information_screen extends AppCompatActivity {
-    Button modifyButton, withdrawButton, reservationButton, waitingButton, bookmarkButton;
+    Button modifyButton, withdrawButton, userinfoButton, reservationButton, waitingButton, bookmarkButton;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.information_screen);
         modifyButton = (Button) findViewById(R.id.modifyButton);
         withdrawButton = (Button) findViewById(R.id.withdrawButton);
+        userinfoButton = (Button) findViewById(R.id.userinfoButton);
         reservationButton = (Button) findViewById(R.id.reservationButton);
         waitingButton = (Button) findViewById(R.id.waitingButton);
         bookmarkButton = (Button) findViewById(R.id.bookmarkButton);
@@ -31,6 +32,13 @@ public class Information_screen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ModifyInformation.class);
+                startActivity(intent);
+            }
+        });
+        userinfoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), UserInformationActivity.class);
                 startActivity(intent);
             }
         });
