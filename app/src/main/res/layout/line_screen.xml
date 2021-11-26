@@ -23,20 +23,14 @@
         android:id="@+id/lineAddButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="15dp"
+        android:layout_marginHorizontal="30dp"
         android:text="추가" />
-
-    <Button
-        android:id="@+id/lineEditButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="변경"/>
 
     <Button
         android:id="@+id/lineDeleteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
+        android:layout_marginHorizontal="30dp"
         android:text="삭제"/>
 
 

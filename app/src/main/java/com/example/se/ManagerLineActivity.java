@@ -18,7 +18,6 @@ public class ManagerLineActivity extends AppCompatActivity {
 
     private ManagerLineListAdapter adapter;
     private Button addButton;
-    private Button editButton;
     private Button deleteButton;
 
     @Override
@@ -26,21 +25,16 @@ public class ManagerLineActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.line_screen);
         addButton = findViewById(R.id.lineAddButton);
-        editButton = findViewById(R.id.lineEditButton);
         deleteButton = findViewById(R.id.lineDeleteButton);
+
+        init();
+
+        getData();
 
         addButton.setOnClickListener(new View.OnClickListener() { //노선 추가 버튼을 눌렀을 때
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), AddLine.class);
-                startActivity(intent);
-            }
-        });
-
-        editButton.setOnClickListener(new View.OnClickListener() { //노선 변경 버튼을 눌렀을 때
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), EditLine.class);
                 startActivity(intent);
             }
         });
@@ -51,10 +45,6 @@ public class ManagerLineActivity extends AppCompatActivity {
                 //노선 선택 삭제
             }
         });
-
-        init();
-
-        getData();
     }
 
     private void init() {
