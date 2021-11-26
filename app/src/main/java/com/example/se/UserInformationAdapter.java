@@ -8,11 +8,12 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
-public class UserInformAdapter extends BaseAdapter {
+// 여기서 User 클래스를 선언(User 생성자)해서 textView 에 값을 넣은게 아니라
+// getView 에서 선언한 UserInformation 의 listItem 의 get 값을 불러옴
+public class UserInformationAdapter extends BaseAdapter {
     ArrayList<UserInformation> items = new ArrayList<UserInformation>();
     Context context;
-    UserInformation userinfo = new UserInformation();
+//    UserInformation userinfo = new UserInformation();
 
     @Override
     public int getCount() {
@@ -44,10 +45,10 @@ public class UserInformAdapter extends BaseAdapter {
         TextView emailText = convertView.findViewById(R.id.tv_email);
         TextView penaltyText = convertView.findViewById(R.id.tv_penalty);
 
-        idText.setText(userinfo.getUserID());
-        nameText.setText(userinfo.getUserName());
-        emailText.setText(userinfo.getUserEmail());
-        penaltyText.setText(userinfo.getPenaltyCount());
+        idText.setText(listItem.getUserID());
+        nameText.setText(listItem.getUserName());
+        emailText.setText(listItem.getUserEmail());
+        penaltyText.setText(listItem.getPenaltyCount());
 
         return convertView;
     }
