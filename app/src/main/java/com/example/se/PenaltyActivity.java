@@ -1,24 +1,31 @@
 package com.example.se;
 
 public class PenaltyActivity {
-    int penalty_count;                  // Penalty 값을 DB 에서 불러와야함
-    int penalty_date = 10;              // Penalty_date 값을 DB 에서 불러와야함
-    Boolean reservationBoolean;         // reservationBoolean 값을 DB 에서 불러와야함(예약이 가능한지 아닌지를 boolean 으로 표현)
+    Penalty p = new Penalty();
+
+    int userID = p.getUserID();                         // UserID에 등록된 패널티 값을 불러와야함
+    int penalty_count = p.getUserID();                  // Penalty 값을 불러와야함
+    int penalty_date = p.getPenalty_date();              // Penalty_date 값 불러와야함
+    Boolean reservationBoolean = p.getReservationBoolean();         // reservationBoolean 값을 DB 에서 불러와야함(예약이 가능한지 아닌지를 boolean 으로 표현)
 
     void penaltyCountDay() {
-        if(this.penalty_date==0){
-            this.penalty_date=10;
-            this.reservationBoolean = Boolean.TRUE; //이게 맞는지 모르겠다
+        if(penalty_date==0){
+            //해당 사용자의 정보에서 값 바뀐거 저장
+            penalty_date=10;
+            reservationBoolean = Boolean.TRUE; //이게 맞는지 모르겠다
         }
         else
-            this.penalty_date--;
+            //해당 사용자의 정보에서 값 바뀐거 저장
+            penalty_date--;
     }
     void penaltyIncrese(int penalty_count){
         if(penalty_count<3)
-            this.penalty_count++;
+            //해당 사용자의 정보에서 값 바뀐거 저장
+            penalty_count++;
         else {
-            this.penalty_count = 0;
-            this.reservationBoolean = Boolean.FALSE;
+            //해당 사용자의 정보에서 값 바뀐거 저장
+            penalty_count = 0;
+            reservationBoolean = Boolean.FALSE;
             penaltyCountDay();
         }
     }

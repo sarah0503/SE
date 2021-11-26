@@ -12,7 +12,7 @@ public class UserInformationActivity extends AppCompatActivity {
     UserInformAdapter adapter;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_info_activity_main);
 
