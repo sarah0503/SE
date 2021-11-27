@@ -11,6 +11,21 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Lifecycle;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Login extends AppCompatActivity {
 
     // 로그인 구현
@@ -19,6 +34,11 @@ public class Login extends AppCompatActivity {
     Button btn_login;               //로그인 버튼
     Button btn_register;            //회원가입 버튼
     Button btn_editpass;            //비밀번호 변경 버튼
+
+
+    static RequestQueue queue;
+    private  static final String TAG = "RESULT";
+    static String result;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,8 +61,48 @@ public class Login extends AppCompatActivity {
                 String pass;
                 id = editTextID.getText().toString();
                 pass = editTextPassword.getText().toString();
-                String loadId = String.valueOf(user.getId());       //보류) DB에서 입력받은 ID와 동일한 것이 있으면 Pass 불러와야함
-                String loadPass = String.valueOf(user.getPassword());
+                String loadId ;//보류) DB에서 입력받은 ID와 동일한 것이 있으면 Pass 불러와야함
+                String loadPass ;
+                String URL = "http://yubusin.dothome.co.kr/login_chk.php";
+
+                if(queue == null) {
+                    try {
+                        queue = Volley.newRequestQueue(Login.this);
+                    }catch (Exception e){ e.printStackTrace();}
+                }
+
+                StringRequest request = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONArray jsonObject = new JSONArray(response);
+
+                            for (int i = 0; i < jsonObject.length(); i++) {
+                                JSONObject obj = jsonObject.getJSONObject(i);
+                                result = obj.getString("result");
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener(){
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+
+                }){
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("id", id);
+                        params.put("pass", pass);
+                        return params;
+                    }
+                };
+                request.setTag(TAG);
+                queue.add(request);
+
 
 
                 if (id.equals("")||pass.equals("")){
