@@ -76,13 +76,15 @@ public class ManagerLineListAdapter extends RecyclerView.Adapter<ManagerLineList
                     @Override
                     public void onClick(View view) {
 
-                        /*bus = new Bus();
-                        bus.setDeparture(editDeparture.getText().toString());
-                        bus.setStop1(editStop1.getText().toString());
-                        bus.setStop2(editStop2.getText().toString());
-                        bus.setStop3(editStop3.getText().toString());
-                        bus.setArrival(editArrival.getText().toString());
-                        bus.setDepartureTime(Integer.parseInt(editTime.getText().toString()));*/
+                        busArrayList.get(pos).setDeparture(editDeparture.getText().toString());
+                        busArrayList.get(pos).setStop1(editStop1.getText().toString());
+                        busArrayList.get(pos).setStop2(editStop2.getText().toString());
+                        busArrayList.get(pos).setStop3(editStop3.getText().toString());
+                        busArrayList.get(pos).setArrival(editArrival.getText().toString());
+
+                        notifyItemChanged(pos);
+
+                        editDialog.dismiss();
 
                         //수정 내용 저장하기
                     }

@@ -18,14 +18,12 @@ public class ManagerNoticeActivity extends AppCompatActivity {
 
     private ManagerNoticeListAdapter adapter;
     private Button noticeAddButton;
-    private Button noticeDeleteButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notice_screen);
         noticeAddButton = findViewById(R.id.noticeAddButton);
-        noticeDeleteButton = findViewById(R.id.noticeDeleteButton);
 
         noticeAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,13 +31,6 @@ public class ManagerNoticeActivity extends AppCompatActivity {
                 //공지사항 추가 화면으로 이동
                 Intent intent = new Intent(getApplicationContext(), AddNotice.class);
                 startActivity(intent);
-            }
-        });
-
-        noticeDeleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //선택한 체크박스 삭제
             }
         });
 

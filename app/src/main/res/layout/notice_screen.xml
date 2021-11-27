@@ -14,22 +14,19 @@
         app:layout_constraintTop_toTopOf="parent">
     </androidx.recyclerview.widget.RecyclerView>
 
-    <Button
-        android:id="@+id/noticeAddButton"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginHorizontal="60dp"
-        android:text="추가" />
+        android:gravity="center">
 
-    <Button
-        android:id="@+id/noticeDeleteButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginHorizontal="60dp"
-        android:text="삭제"/>
+        <Button
+            android:id="@+id/noticeAddButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:text="추가" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
