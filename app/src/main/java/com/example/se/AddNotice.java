@@ -30,6 +30,8 @@ public class AddNotice extends AppCompatActivity {
     private Button noticeInputButton;
     private EditText inputTitleEditText;
     private EditText inputContentEditText;
+    static String title;
+    static String content;
 
     static RequestQueue queue;
     private  static final String TAG = "RESULT";
@@ -40,6 +42,9 @@ public class AddNotice extends AppCompatActivity {
         setContentView(R.layout.add_notice_screen);
 
         String addURL = ("http://yubusin.dothome.co.kr/addnotice_insert.php");
+//        if (queue != null) {
+//            queue.cancelAll(TAG);
+//        }
 
         if(queue == null) {
             try {
@@ -63,8 +68,8 @@ public class AddNotice extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("id", "1");
-                params.put("title", inputTitleEditText.getText().toString());
-                params.put("content", inputContentEditText.getText().toString());
+                params.put("title", title);
+                params.put("content", content);
                 return params;
 
             }
@@ -81,6 +86,8 @@ public class AddNotice extends AppCompatActivity {
                 Notice notice = new Notice();
                 notice.setTitle(inputTitleEditText.getText().toString());
                 notice.setContent(inputContentEditText.getText().toString());
+                title = inputTitleEditText.getText().toString();
+                content = inputContentEditText.getText().toString();
                 //notice.setDate(); 당일 날짜 저장
 
                 queue.add(request);
@@ -93,6 +100,9 @@ public class AddNotice extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                 Toast.makeText(builder.getContext(), "완료되었습니다.", Toast.LENGTH_LONG).show();
 
+                if (queue != null) {
+                    queue.cancelAll(TAG);
+                }
                 //finish();
             }
         });
