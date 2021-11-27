@@ -11,15 +11,16 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class AddLine extends AppCompatActivity {
 
-    private Spinner lineAddSpinner, timeAddSpinner;
-    private ArrayList<String> lineList, timeList;
-    private ArrayAdapter<String> lineAdapter, timeAdapter;
+    private Spinner departureAddSpinner, arrivalAddSpinner, timeAddSpinner;
+    private ArrayList<String> departureList, arrivalList, timeList;
+    private ArrayAdapter<String> departureAdapter, arrivalAdapter, timeAdapter;
 
     private Button cancelButton, addButton;
     @Override
@@ -30,19 +31,45 @@ public class AddLine extends AppCompatActivity {
         cancelButton = findViewById(R.id.cancelButton);
         addButton = findViewById(R.id.addButton);
 
-        lineList = new ArrayList<>();
+        departureList = new ArrayList<>();
+        //lineList = addLIneList( DB로 받아온 ArrayLIst<Bus> , departureList )
+        departureList.add("출발지1");
+        departureList.add("출발지2");
+        departureList.add("출발지3");
 
-        lineList.add("영남대-임당역-대공원역-반월당역-경대병원역");
-        lineList.add("문양역-다사역-죽전역-반고개역-영남대역");
-        //addLineList(lineList);
-
-        lineAddSpinner = (Spinner) findViewById(R.id.lineAddSpinner);
-        lineAdapter = new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_spinner_dropdown_item,lineList);
-        lineAddSpinner.setAdapter(lineAdapter);
-        lineAddSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        departureAddSpinner = (Spinner) findViewById(R.id.departureAddSpinner);
+        departureAdapter = new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_spinner_dropdown_item,departureList);
+        departureAddSpinner.setAdapter(departureAdapter);
+        departureAddSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                //노선 선택했을 때
+                //출발지 선택했을 때: DB에 조회할 수 있는 노선으로 추가
+                //Toast.makeText(getApplicationContext(),lineList.get(i)+" 선택", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(adapterView.getContext());
+                builder.setTitle("Confirm");
+                builder.setMessage("노선이 선택되지 않았습니다.");
+                builder.setPositiveButton("닫기", null);
+                builder.create().show();
+            }
+        });
+
+        arrivalList = new ArrayList<>();
+        //lineList = addLIneList( DB로 받아온 ArrayLIst<Bus> , arrivalList )
+        arrivalList.add("출발지1");
+        arrivalList.add("출발지2");
+        arrivalList.add("출발지3");
+
+        arrivalAddSpinner = (Spinner) findViewById(R.id.arrivalAddSpinner);
+        arrivalAdapter = new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_spinner_dropdown_item,arrivalList);
+        arrivalAddSpinner.setAdapter(arrivalAdapter);
+        arrivalAddSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                //도착지 선택했을 때: DB에 조회할 수 있는 노선으로 추가
                 //Toast.makeText(getApplicationContext(),lineList.get(i)+" 선택", Toast.LENGTH_SHORT).show();
             }
 
@@ -92,49 +119,22 @@ public class AddLine extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //리스트에 추가
+                //리스트에 추가 후 종료
+
+                finish();
             }
         });
     }
 
-    void addLineList(ArrayList list){
-
-        /****************************** DB 데이터 불러오기 ******************************/
-
-        List<String> departureList = Arrays.asList( );
-
-        List<String> stop1List = Arrays.asList( );
-
-        List<String> stop2List = Arrays.asList( );
-
-        List<String> stop3List = Arrays.asList( );
-
-        List<String> arrivalList = Arrays.asList( );
-
-        for(int i = 0; i < list.size(); i++) {
-            /*
-
-            list.add(departureList.get(i) + "-" + stop1List.get(i) + "-" + stop2List.get(i) + "-"
-             + stop3List.get(i) + "-" + arrivalList.get(i) + "-");
-
-            */
+    void addLineList(ArrayList<Bus> busList, ArrayList<String> lineList){ /** DB 데이터 불러오면 스피너에 추가하는 메소드 **/
+        for(int i = 0; i < busList.size(); i++) {
+            lineList.add(busList.get(i).getDeparture());
         }
     }
 
-    void addTimeList(ArrayList list){
-
-        /****************************** DB 데이터 불러오기 ******************************/
-
-        int[] timeList = { };
-
-        //int[] seatList = { };
-
-        for(int i = 0; i < list.size(); i++) {
-            /*
-
-            list.add(timeList.get(i) + "시");
-
-            */
+    void addTimeList(ArrayList<Bus> busList, ArrayList<String> timeList){
+        for(int i = 0; i < busList.size(); i++) {
+            timeList.add(busList.get(i).getDepartureTime() + "");
         }
     }
 }
