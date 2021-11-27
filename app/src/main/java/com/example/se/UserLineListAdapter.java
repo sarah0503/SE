@@ -1,8 +1,10 @@
 package com.example.se;
 
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,6 +27,31 @@ public class UserLineListAdapter extends RecyclerView.Adapter<UserLineListAdapte
     @Override
     public void onBindViewHolder(@NonNull UserLineListAdapter.ViewHolder holder, int position) {
         holder.onBind(busArrayList.get(position));
+
+        int pos = position;
+
+        holder.bookmarkButton.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) { //버튼을 눌렀을 때
+                    if(holder.bookmarkButton.isSelected()) {
+                        //선택된 상태 -> 선택 해제
+                        holder.bookmarkButton.setSelected(false);
+                        holder.bookmarkButton.setBackgroundResource(R.drawable.ic_star_border);
+                        
+                        //즐겨찾기에서 삭제
+                    }
+                    else {
+                        //선택 해제된 상태 -> 선택
+                        holder.bookmarkButton.setSelected(true);
+                        holder.bookmarkButton.setBackgroundResource(R.drawable.ic_star);
+                        
+                        //즐겨찾기에 추가
+                    }
+                }
+                return false;
+            }
+        });
     }
 
     void addItem(Bus bus) {
@@ -44,6 +71,7 @@ public class UserLineListAdapter extends RecyclerView.Adapter<UserLineListAdapte
         private TextView userArrival;
         private TextView userTime;
         private TextView userSeat;
+        private Button bookmarkButton;
 
         ViewHolder(@NonNull View itemView){
             super(itemView);
@@ -55,6 +83,7 @@ public class UserLineListAdapter extends RecyclerView.Adapter<UserLineListAdapte
             userArrival = itemView.findViewById(R.id.userArrival);
             userTime = itemView.findViewById(R.id.userTime);
             userSeat = itemView.findViewById(R.id.userSeat);
+            bookmarkButton = itemView.findViewById(R.id.bookmarkButton);
         }
 
         void onBind(Bus bus) {
