@@ -1,11 +1,17 @@
 package com.example.se;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,6 +24,9 @@ public class ManagerNoticeActivity extends AppCompatActivity {
 
     private ManagerNoticeListAdapter adapter;
     private Button noticeAddButton;
+    private Dialog addDialog;
+    private Button noticeInputButton;
+    private EditText inputTitleEditText, inputContentEditText;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,18 +34,44 @@ public class ManagerNoticeActivity extends AppCompatActivity {
         setContentView(R.layout.notice_screen);
         noticeAddButton = findViewById(R.id.noticeAddButton);
 
-        noticeAddButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //공지사항 추가 화면으로 이동
-                Intent intent = new Intent(getApplicationContext(), AddNotice.class);
-                startActivity(intent);
-            }
-        });
-
         init();
 
         getData();
+
+        noticeAddButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addDialog = new Dialog(view.getContext());
+                addDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                addDialog.setContentView(R.layout.add_notice_screen);
+                WindowManager.LayoutParams params = addDialog.getWindow().getAttributes();
+                params.width = WindowManager.LayoutParams.MATCH_PARENT;
+                params.height = WindowManager.LayoutParams.MATCH_PARENT;
+                addDialog.getWindow().setAttributes((WindowManager.LayoutParams) params);
+
+                addDialog.show();
+
+                noticeInputButton = addDialog.findViewById(R.id.noticeInputButton);
+                inputTitleEditText = addDialog.findViewById(R.id.inputTitleEditText);
+                inputContentEditText = addDialog.findViewById(R.id.inputContentEditText);
+
+                noticeInputButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Notice notice = new Notice();
+                        notice.setTitle(inputTitleEditText.getText().toString());
+                        notice.setContent(inputContentEditText.getText().toString());
+                        notice.setDate("0000.00.00");
+
+                        adapter.addItem(notice);
+                        adapter.notifyDataSetChanged();
+
+
+                        addDialog.dismiss();
+                    }
+                });
+            }
+        });
     }
 
     private void init() {
