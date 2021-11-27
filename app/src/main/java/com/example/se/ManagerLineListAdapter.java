@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class ManagerLineListAdapter extends RecyclerView.Adapter<ManagerLineListAdapter.ViewHolder> {
 
-    ArrayList<Bus> busArrayList = new ArrayList<>();
+    private ArrayList<Bus> busArrayList = new ArrayList<>();
     private Dialog editDialog;
     private EditText editDeparture, editStop1, editStop2, editStop3, editArrival, editTime;
     private Button cancelButton, addButton;
