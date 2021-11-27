@@ -39,6 +39,37 @@ public class AddNotice extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_notice_screen);
 
+        String addURL = ("http://yubusin.dothome.co.kr/addnotice_insert.php");
+
+        if(queue == null) {
+            try {
+                queue = Volley.newRequestQueue(AddNotice.this);
+            }catch (Exception e){ e.printStackTrace();}
+        }
+
+        StringRequest request = new StringRequest(Request.Method.POST, addURL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+//                        try
+            }
+        }, new Response.ErrorListener(){
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("id", "1");
+                params.put("title", inputTitleEditText.getText().toString());
+                params.put("content", inputContentEditText.getText().toString());
+                return params;
+
+            }
+        };
+        request.setTag(TAG);
 
         noticeInputButton = findViewById(R.id.noticeInputButton);
         inputTitleEditText = findViewById(R.id.inputTitleEditText);
@@ -50,39 +81,6 @@ public class AddNotice extends AppCompatActivity {
                 Notice notice = new Notice();
                 notice.setTitle(inputTitleEditText.getText().toString());
                 notice.setContent(inputContentEditText.getText().toString());
-
-                String addURL = ("http://yubusin.dothome.co.kr/addnotice_insert.php");
-
-                if(queue == null) {
-                    try {
-                        queue = Volley.newRequestQueue(AddNotice.this);
-                    }catch (Exception e){ e.printStackTrace();}
-                }
-
-                StringRequest request = new StringRequest(Request.Method.POST, addURL, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-//                        try
-                    }
-                }, new Response.ErrorListener(){
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-
-                }){
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String, String> params = new HashMap<String, String>();
-                        params.put("id", "1");
-                        params.put("title", inputTitleEditText.getText().toString());
-                        params.put("content", inputContentEditText.getText().toString());
-                        return params;
-
-                    }
-                };
-                request.setTag(TAG);
-
                 //notice.setDate(); 당일 날짜 저장
 
                 queue.add(request);
