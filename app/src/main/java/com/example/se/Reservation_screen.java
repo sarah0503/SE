@@ -47,68 +47,27 @@ public class Reservation_screen extends AppCompatActivity {
     final ArrayList<Integer> times = new ArrayList <Integer>();
 
 
-//    public class request extends StringRequest{
-//        final  static private String URL = "http://yubusin.dothome.co.kr/reservation_screen_businfo.php";
-//
-//        public request(String startpnt, String destpnt, int starttime, Response.Listener<String> listener){
-//            super(Method.POST, URL, listener, null);
-//            parameters = new HashMap<>();
-//            parameters.put("arrivlas", startpnt);
-//            parameters.put("departures", destpnt);
-//            parameters.put("times", Integer.toString(starttime));
-//        }
-//
-//        public Map<String , String> getParams(){
-//            return parameters;
-//        }
-//    }
-
-
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reservation_screen);
-        JSONArray buses = null;
 
-      String URL1 = "http://yubusin.dothome.co.kr/reservation_screen_businfo.php";
-      String URL2 = "http://yubusin.dothome.co.kr/reservation_screen_allbusinfo.php";
-        if (queue != null) {
-            queue.cancelAll(TAG);
-        }
-        if(queue == null) {
-            try {
-                queue = Volley.newRequestQueue(Reservation_screen.this);
-            }catch (Exception e){ e.printStackTrace();}
-        }
+        arrivals.add("반월당");
+        arrivals.add("영남대");
+        arrivals.add("달서구");
+        arrivals.add("수성구");
 
-        StringRequest request = new StringRequest(Request.Method.GET, URL1, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONArray jsonObject = new JSONArray(response);
+        departures.add("반월당");
+        departures.add("영남대");
+        departures.add("달서구");
+        departures.add("수성구");
 
-                    for (int i = 0; i < jsonObject.length(); i++) {
-                        JSONObject obj = jsonObject.getJSONObject(i);
-                        String startpnt = obj.getString("startpnt");
-                        String destpnt =obj.getString("destpnt");
-                        Integer starttime = obj.getInt("starttime");
-                        arrivals.add(startpnt);
-                        departures.add(destpnt);
-                        times.add((starttime));
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-            }, new Response.ErrorListener(){
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-
-        });
-        request.setTag(TAG);
-        queue.add(request);
+        times.add(8);
+        times.add(10);
+        times.add(12);
+        times.add(14);
+        times.add(16);
+        times.add(18);
 
         doneButton = (Button) findViewById(R.id.doneButton);
         departureSpinner = (Spinner) findViewById(R.id.departureSpinner);
@@ -194,29 +153,7 @@ public class Reservation_screen extends AppCompatActivity {
                 /***********DB**************/
                 //버스아이디 찾아서 버스 객체 찾기
                 Bus currentBus = new Bus();
-                StringRequest request1 = new StringRequest(Request.Method.GET, URL2, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                    }
-                }, new Response.ErrorListener(){
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
 
-                    }
-
-                }){
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String, String> params = new HashMap<String, String>();
-                        params.put("arrival", arrival);
-                        params.put("departure", departure);
-                        params.put("time", time);
-                        return params;
-
-                    }
-                };
-                request1.setTag(TAG);
-                queue.add(request1);
 
                 if(currentBus.getCurrentCapacity() >= currentBus.getCapacity()){
 

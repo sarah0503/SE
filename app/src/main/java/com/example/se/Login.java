@@ -60,87 +60,27 @@ public class Login extends AppCompatActivity {
                 String pass;
                 id = editTextID.getText().toString();
                 pass = editTextPassword.getText().toString();
-                String URL = "http://yubusin.dothome.co.kr/login_chk.php";
-                if (queue != null) {
-                    queue.cancelAll(TAG);
-                }
-
-                if(queue == null) {
-                    try {
-                        queue = Volley.newRequestQueue(Login.this);
-                    }catch (Exception e){ e.printStackTrace();}
-                }
-
-                StringRequest request1 = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                    }
-                }, new Response.ErrorListener(){
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-
-                }){
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String, String> params = new HashMap<String, String>();
-                        params.put("id", id);
-                        params.put("pass", pass);
-                        return params;
-                    }
-                };
-                request1.setTag(TAG);
-                queue.add(request1);
-
-
-                if (queue1 != null) {
-                    queue1.cancelAll(TAG);
-                }
-
-                if(queue1 == null) {
-                    try {
-                        queue1 = Volley.newRequestQueue(Login.this);
-                    }catch (Exception e){ e.printStackTrace();}
-                }
-
-                StringRequest request2 = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONArray jsonObject = new JSONArray(response);
-
-                            for (int i = 0; i < jsonObject.length(); i++) {
-                                JSONObject obj = jsonObject.getJSONObject(i);
-                                result = obj.getString("result");
-                                if(result.equals("success")) break;
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener(){
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-
-                });
-                request2.setTag(TAG);
-                queue1.add(request2);
-
 
 
                 if (id.equals("")||pass.equals("")){
                     Toast.makeText(getApplicationContext(), "입력된 값이 없습니다.", Toast.LENGTH_SHORT).show();
                 }
-                else if (result.equals("success")){
-                        Toast.makeText(getApplicationContext(), "로그인되었습니다.", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(), Home_screen.class);
-                        startActivity(intent);
+
+                boolean error = false;
+                for(int i = 0; i<User.user_count ; i++){
+                    if(Join.users[i].checkId(id) == true){
+                        error = true;
+                        if(Join.users[i].isCorrect(pass) == true){
+                            Intent intent = new Intent(getApplicationContext(), Home_screen.class);
+                            startActivity(intent);
+                        }
+                        else{
+                            Toast.makeText(getApplicationContext(), "일치하지 않는 비밀번호 입니다.", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                else {
-                    Toast.makeText(getApplicationContext(), "로그인 정보가 잘못되었습니다.", Toast.LENGTH_SHORT).show();
+                }
+                if(error == false){
+                    Toast.makeText(getApplicationContext(), "등록되지 않은 아이디입니다.", Toast.LENGTH_SHORT).show();
                 }
             }
         });

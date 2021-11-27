@@ -40,6 +40,7 @@ public class Join extends AppCompatActivity {
 
     static RequestQueue queue;
     private  static final String TAG = "RESULT";
+    public static User users[] = new User[100];
     static String result;
 
     @Override
@@ -57,57 +58,25 @@ public class Join extends AppCompatActivity {
         btn_numck = (Button)findViewById(R.id.btn_numck);       //학번 확인 버튼
         btn_emailck = (Button)findViewById(R.id.btn_emailck);   //email 중복확인 버튼
 
-        User user = new User();     //이거를 User에서 불러오는게 맞나?
+        //User user = new User();     //이거를 User에서 불러오는게 맞나?
 
         btn_numck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String number;
-                number = et_number.getText().toString();
-//                String loadId = String.valueOf(user.getId());           //DB에서 number와 동일한 ID가 있으면 로드
-                String URL = "http://yubusin.dothome.co.kr/join_idck.php";      // URL이 이게 맞는지 모르겠어
-
-                if(queue == null) {
-                    try {
-                        queue = Volley.newRequestQueue(Join.this);
-                    }catch (Exception e){ e.printStackTrace();}
+                int result = 1;
+                String number = et_number.getText().toString();
+                for(int i = 0 ;i<User.user_count;i++){
+                    String n = Integer.toString(users[User.user_count].getId());
+                    if(n.equals(number)){
+                        result = 0;
+                        //break;
+                    }
                 }
-
-                StringRequest request = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONArray jsonObject = new JSONArray(response);
-
-                            for (int i = 0; i < jsonObject.length(); i++) {
-                                JSONObject obj = jsonObject.getJSONObject(i);
-                                result = obj.getString("result");
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener(){
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-
-                }){
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String, String> params = new HashMap<String, String>();
-                        params.put("number", number);
-                        return params;
-                    }
-                };
-                request.setTag(TAG);
-                queue.add(request);
 
                 if (number.equals("")){
                     Toast.makeText(getApplicationContext(), "입력된 값이 없습니다.", Toast.LENGTH_SHORT).show();
                 }
-                else if (result.equals("success")){
+                else if (result == 0){
                     Toast.makeText(getApplicationContext(), "이미 등록된 사용자입니다.", Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -120,53 +89,20 @@ public class Join extends AppCompatActivity {
         btn_emailck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                String loademail = String.valueOf(user.getEmail());
-                String email;
-                email = et_email.getText().toString();
-
-                String URL = "http://yubusin.dothome.co.kr/join_emailck.php";      // URL이 이게 맞는지 모르겠어
-
-                if(queue == null) {
-                    try {
-                        queue = Volley.newRequestQueue(Join.this);
-                    }catch (Exception e){ e.printStackTrace();}
+                int result = 1;
+                String email = et_number.getText().toString();
+                for(int i = 0 ;i<User.user_count;i++){
+                    String n = (users[User.user_count].getEmail());
+                    if(n.equals(email)){
+                        result = 0;
+                        break;
+                    }
                 }
-
-                StringRequest request = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONArray jsonObject = new JSONArray(response);
-
-                            for (int i = 0; i < jsonObject.length(); i++) {
-                                JSONObject obj = jsonObject.getJSONObject(i);
-                                result = obj.getString("result");
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener(){
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-
-                }){
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String, String> params = new HashMap<String, String>();
-                        params.put("email", email);
-                        return params;
-                    }
-                };
-                request.setTag(TAG);
-                queue.add(request);
 
                 if (email.equals("")){
                     Toast.makeText(getApplicationContext(), "입력된 값이 없습니다.", Toast.LENGTH_SHORT).show();
                 }
-                else if (result.equals("success")){
+                else if (result == 0){
                     Toast.makeText(getApplicationContext(), "이미 사용중인 이메일입니다.", Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -193,61 +129,20 @@ public class Join extends AppCompatActivity {
                 email = et_email.getText().toString();
 
 
-                if (queue != null) {
-                    queue.cancelAll(TAG);
-                }
-
                 if (name.equals("")||pass.equals("")||passck.equals("")||email.equals("")){
                     Toast.makeText(getApplicationContext(), "공백 부분을 입력해주세요.", Toast.LENGTH_SHORT).show();}
-//                else if (!(pass.equals(passck))){
-//                    Toast.makeText(getApplicationContext(), "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();}
-//                else if (!(btn_numck.isClickable())){
-//                    Toast.makeText(getApplicationContext(), "학번확인을 하세요.", Toast.LENGTH_SHORT).show();}
-//                else if (!(btn_emailck.isClickable())){
-//                    Toast.makeText(getApplicationContext(), "이메일 중복확인을 하세요.", Toast.LENGTH_SHORT).show();}
+                else if (!(pass.equals(passck))){
+                    Toast.makeText(getApplicationContext(), "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();}
+                else if (!(btn_numck.isClickable())){
+                    Toast.makeText(getApplicationContext(), "학번확인을 하세요.", Toast.LENGTH_SHORT).show();}
+                else if (!(btn_emailck.isClickable())){
+                    Toast.makeText(getApplicationContext(), "이메일 중복확인을 하세요.", Toast.LENGTH_SHORT).show();}
                 else {
                     //학번(ID), Password, 이름, email 을 저장해야함
 
-                    String addURL = ("http://yubusin.dothome.co.kr/join_insert.php");
-
-                    if(queue == null) {
-                        try {
-                            queue = Volley.newRequestQueue(Join.this);
-                        }catch (Exception e){ e.printStackTrace();}
-                    }
-
-                    StringRequest request = new StringRequest(Request.Method.POST, addURL, new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-//                        try
-                        }
-                    }, new Response.ErrorListener(){
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-
-                        }
-
-                    }){
-                        @Override
-                        protected Map<String, String> getParams() throws AuthFailureError {
-                            Map<String, String> params = new HashMap<String, String>();
-                            params.put("number", number);
-                            params.put("name", name);
-                            params.put("pass", pass);
-                            params.put("email", email);
-                            params.put("manager", manager);
-                            return params;
-
-                        }
-                    };
-                    request.setTag(TAG);
-
-                    queue.add(request);
-
+                    users[User.user_count] = new User(name, Integer.parseInt(number), pass, email);
                     Toast.makeText(getApplicationContext(), "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();}
-                if (queue != null) {
-                    queue.cancelAll(TAG);
-                }
+
 
             }
         });
@@ -261,5 +156,11 @@ public class Join extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), Login.class);
+        startActivity(intent);
     }
 }
