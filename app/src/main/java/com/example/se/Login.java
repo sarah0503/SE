@@ -51,7 +51,6 @@ public class Login extends AppCompatActivity {
         btn_register = (Button)findViewById(R.id.btn_register);
         btn_editpass = (Button)findViewById(R.id.btn_editpass);
 
-        User user = new User();
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
