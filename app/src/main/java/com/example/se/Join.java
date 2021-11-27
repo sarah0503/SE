@@ -11,6 +11,17 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Join extends AppCompatActivity {
     EditText et_number;
     EditText et_name;
@@ -21,6 +32,10 @@ public class Join extends AppCompatActivity {
     Button btn_cancle;
     Button btn_numck;
     Button btn_emailck;
+
+
+    static RequestQueue queue;
+    private  static final String TAG = "RESULT";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -87,6 +102,7 @@ public class Join extends AppCompatActivity {
                 String pass;
                 String passck;
                 String email;
+                String manager = "0";
 
                 number = et_number.getText().toString();
                 name = et_name.getText().toString();
@@ -104,6 +120,43 @@ public class Join extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "이메일 중복확인을 하세요.", Toast.LENGTH_SHORT).show();}
                 else {
                     //학번(ID), Password, 이름, email 을 저장해야함
+
+                    String addURL = ("http://yubusin.dothome.co.kr/join_insert.php");
+
+                    if(queue == null) {
+                        try {
+                            queue = Volley.newRequestQueue(Join.this);
+                        }catch (Exception e){ e.printStackTrace();}
+                    }
+
+                    StringRequest request = new StringRequest(Request.Method.POST, addURL, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+//                        try
+                        }
+                    }, new Response.ErrorListener(){
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+
+                        }
+
+                    }){
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            Map<String, String> params = new HashMap<String, String>();
+                            params.put("number", number);
+                            params.put("name", name);
+                            params.put("pass", pass);
+                            params.put("email", email);
+                            params.put("manager", manager);
+                            return params;
+
+                        }
+                    };
+                    request.setTag(TAG);
+
+                    queue.add(request);
+
                     Toast.makeText(getApplicationContext(), "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();}
             }
         });
