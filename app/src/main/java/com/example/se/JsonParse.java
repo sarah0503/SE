@@ -10,55 +10,21 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class JsonParse extends AsyncTask<String, Void, String>{
-    String TAG = "JsonParseTest";
+   // String TAG = "JsonParseTest";
     String myJSON ;
-
-    public String getMyJSON() {
-        return myJSON;
+   @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        myJSON = null;
     }
 
+    public void setMyJSON(String myJSON) {
+        this.myJSON = myJSON;
+    }
 
     @Override
     protected String doInBackground(String... strings) {
-//        String url = strings[0];
-//        try{
-//            URL serverURL = new URL(url);
-//            HttpURLConnection httpURLConnection = (HttpURLConnection) serverURL.openConnection();
-//
-//            httpURLConnection.setReadTimeout(5000);
-//            httpURLConnection.setConnectTimeout(5000);
-//            httpURLConnection.connect();
-//
-//            int responseStatusCode = httpURLConnection.getResponseCode();
-//
-//            InputStream inputStream;
-//            if(responseStatusCode == HttpURLConnection.HTTP_OK){
-//                inputStream = httpURLConnection.getInputStream();
-//            }
-//            else{
-//                inputStream = httpURLConnection.getErrorStream();
-//            }
-//
-//            InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
-//            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-//
-//            StringBuilder sb = new StringBuilder();
-//            String line;
-//
-//            while((line = bufferedReader.readLine()) != null){
-//                sb.append(line);
-//            }
-//
-//            bufferedReader.close();
-//            Log.d(TAG, sb.toString().trim());
-//
-//            return sb.toString().trim();
-//
-//        }catch (Exception e){
-//            Log.d(TAG, "InsertData : Error", e);
-//            String errorString = e.toString();
-//            return null;
-//        }
+
         String uri = strings[0];
         BufferedReader bufferedReader = null;
         try{
@@ -68,12 +34,13 @@ public class JsonParse extends AsyncTask<String, Void, String>{
 
             bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
-
             String json;
             while ((json = bufferedReader.readLine()) != null){
                 sb.append(json + "\n");
             }
-            return sb.toString().trim();
+            String r = sb.toString().trim();
+            //setMyJSON(r);
+            return r;
         } catch (Exception e){
             return null;
         }
@@ -81,7 +48,15 @@ public class JsonParse extends AsyncTask<String, Void, String>{
 
     @Override
     protected void onPostExecute(String s) {
+        //Log.i("###", "|" + s);
         super.onPostExecute(s);
-        myJSON = s;
+        setMyJSON(s);
     }
+
+
+    public String getMyJSON() {
+        return myJSON;
+    }
+
+
 }

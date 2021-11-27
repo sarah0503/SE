@@ -1,29 +1,68 @@
 package com.example.se;
 
+import android.content.ClipData;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
+import java.util.*;
+import android.widget.*;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.android.volley.*;
+import com.android.volley.toolbox.*;
+import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.jar.JarException;
 
 public class Reservation_screen extends AppCompatActivity {
     Spinner arrivalSpinner, departureSpinner, timeSpinner;
     Button doneButton;
+//    ArrayList<ClipData.Item> items= new ArrayList<>();
+//    ItemAdapter adapter;
     private static final String TAG_RESULT = "result";
     private static final String TAG_ARRIVAL = "startpnt";
     private static final String TAG_DEPARTURE = "destpnt";
     private static final String TAG_TIME = "starttime";
+    private  static final String TAG = "RESULT";
+
+    int selectTime;
+    String selectArrival;
+    String selectDeparture;
+
+     static RequestQueue queue;
+    private Map<String, String> parameters;
+
+     final ArrayList<String> arrivals = new ArrayList <String> ();
+    final ArrayList<String> departures = new ArrayList <String> ();
+    int place_count = 0;
+    final ArrayList<Integer> times = new ArrayList <Integer>();
+
+
+//    public class request extends StringRequest{
+//        final  static private String URL = "http://yubusin.dothome.co.kr/reservation_screen_businfo.php";
+//
+//        public request(String startpnt, String destpnt, int starttime, Response.Listener<String> listener){
+//            super(Method.POST, URL, listener, null);
+//            parameters = new HashMap<>();
+//            parameters.put("arrivlas", startpnt);
+//            parameters.put("departures", destpnt);
+//            parameters.put("times", Integer.toString(starttime));
+//        }
+//
+//        public Map<String , String> getParams(){
+//            return parameters;
+//        }
+//    }
 
 
     @Override
@@ -32,96 +71,123 @@ public class Reservation_screen extends AppCompatActivity {
         setContentView(R.layout.reservation_screen);
         JSONArray buses = null;
 
+      String URL = "http://yubusin.dothome.co.kr/reservation_screen_businfo.php";
 
-        JsonParse businfo = new JsonParse();
-       businfo.execute("http://yubusin.dothome.co.kr/reservation_screen_businfo.php");
-        JsonParse reservinsert = new JsonParse();
-        reservinsert.execute("http://yubusin.dothome.co.kr/reservation_screen_reservinsert.php");
-       // jsonParse.execute("http://localhose/reservation_screen_businfo.php");
+        if(queue == null) {
+            try {
+                queue = Volley.newRequestQueue(Reservation_screen.this);
+            }catch (Exception e){ e.printStackTrace();}
+        }
+
+        StringRequest request = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray jsonObject = new JSONArray(response);
+
+                    for (int i = 0; i < jsonObject.length(); i++) {
+                        JSONObject obj = jsonObject.getJSONObject(i);
+                        String departure = obj.getString("startpnt");
+                        String arrival =obj.getString("destpnt");
+                        Integer time = obj.getInt("starttime");
+                        arrivals.add(arrival);
+                        departures.add(departure);
+                        times.add((time));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            }, new Response.ErrorListener(){
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+
+        });
+        request.setTag(TAG);
+        queue.add(request);
 
         doneButton = (Button) findViewById(R.id.doneButton);
         departureSpinner = (Spinner) findViewById(R.id.departureSpinner);
         arrivalSpinner = (Spinner) findViewById(R.id.arrivalSpinner);
         timeSpinner = (Spinner) findViewById(R.id.timeSpinner);
         /***********DB**************/
-        ArrayList<String> arrivals = new ArrayList <String> ();
-        ArrayList<String> departures = new ArrayList <String> ();
-        //String places[] = new String[100];
-        int place_count = 0;
-        ArrayList<Integer> times = new ArrayList <Integer>();
         int count = Bus.count;
-
-        JSONObject businfoObject = null;
-        try {
-            businfoObject = new JSONObject(businfo.getMyJSON());
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        try {
-            buses = businfoObject.getJSONArray(TAG_RESULT);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        for(int i =0 ;i<buses.length(); i++){
-            JSONObject c = null;
-            try {
-                c = buses.getJSONObject(i);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            String arrival = null, departure = null;
-            int time = 0;
-            try {
-                 arrival = c.getString(TAG_ARRIVAL);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            try {
-                 departure = c.getString(TAG_DEPARTURE);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            try {
-                 time = Integer.parseInt(c.getString(TAG_TIME));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            arrivals.add(arrival);
-            departures.add(departure);
-            times.add(time);
-
-        }
 
         ArrayAdapter<String> arrivalAdapter = new ArrayAdapter<String>(
                 getApplicationContext(),
                 R.layout.support_simple_spinner_dropdown_item,
                 arrivals);
-        arrivalSpinner.setAdapter(arrivalAdapter);
 
-        ArrayAdapter<String> departureAdpater = new ArrayAdapter<String>(
+        ArrayAdapter<String> departureAdapter = new ArrayAdapter<String>(
                 getApplicationContext(),
                 R.layout.support_simple_spinner_dropdown_item,
-                arrivals);
-        departureSpinner.setAdapter(departureAdpater);
+                departures);
 
         ArrayAdapter<Integer> timeAdapter = new ArrayAdapter<Integer>(
                 getApplicationContext(),
                 R.layout.support_simple_spinner_dropdown_item,
                 times);
+
+//        arrivalAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        departureAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        timeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        arrivalSpinner.setAdapter(arrivalAdapter);
+
+        departureSpinner.setAdapter(departureAdapter);
+
         timeSpinner.setAdapter(timeAdapter);
+
+        arrivalAdapter.notifyDataSetInvalidated();
+        departureAdapter.notifyDataSetInvalidated();
+        timeAdapter.notifyDataSetInvalidated();
+
+        arrivalSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectArrival = (String) arrivals.get(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        departureSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectDeparture = (String) departures.get(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        timeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectTime = (Integer) times.get(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                int time;
-                String arrival;
-                String departure;
-                arrival = arrivalSpinner.getSelectedItem().toString();
-                departure = departureSpinner.getSelectedItem().toString();
-                time = Integer.parseInt(timeSpinner.getSelectedItem().toString());
+                selectArrival = arrivalSpinner.getSelectedItem().toString();
+                selectDeparture = departureSpinner.getSelectedItem().toString();
+                selectTime = Integer.parseInt(timeSpinner.getSelectedItem().toString());
 
                 /***********DB**************/
                 //버스아이디 찾아서 버스 객체 찾기
@@ -199,6 +265,9 @@ public class Reservation_screen extends AppCompatActivity {
             }
         });
 
+        if (queue != null) {
+            queue.cancelAll(TAG);
+        }
 
     }
 }
