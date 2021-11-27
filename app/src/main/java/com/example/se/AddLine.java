@@ -27,6 +27,9 @@ public class AddLine extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_line_screen);
 
+        JsonParse businfo = new JsonParse();
+        businfo.execute("http://yubusin.dothome.co.kr/AddLine_businfo.php");
+
         cancelButton = findViewById(R.id.cancelButton);
         addButton = findViewById(R.id.addButton);
 

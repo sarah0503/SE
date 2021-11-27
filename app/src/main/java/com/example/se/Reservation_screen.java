@@ -11,16 +11,33 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class Reservation_screen extends AppCompatActivity {
     Spinner arrivalSpinner, departureSpinner, timeSpinner;
     Button doneButton;
+    private static final String TAG_RESULT = "result";
+    private static final String TAG_ARRIVAL = "startpnt";
+    private static final String TAG_DEPARTURE = "destpnt";
+    private static final String TAG_TIME = "starttime";
+
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reservation_screen);
+        JSONArray buses = null;
+
+
+        JsonParse businfo = new JsonParse();
+       businfo.execute("http://yubusin.dothome.co.kr/reservation_screen_businfo.php");
+        JsonParse reservinsert = new JsonParse();
+        reservinsert.execute("http://yubusin.dothome.co.kr/reservation_screen_reservinsert.php");
+       // jsonParse.execute("http://localhose/reservation_screen_businfo.php");
 
         doneButton = (Button) findViewById(R.id.doneButton);
         departureSpinner = (Spinner) findViewById(R.id.departureSpinner);
@@ -34,23 +51,49 @@ public class Reservation_screen extends AppCompatActivity {
         ArrayList<Integer> times = new ArrayList <Integer>();
         int count = Bus.count;
 
-        /**임시**/
-        Bus a = new Bus();
-        a.setArrival("집");
-        a.setDepartureTime(8);
-        Bus b = new Bus();
-        b.setArrival("학교");
-        b.setDepartureTime(10);
-       // for(int i = 0; i<count; i++){
-            arrivals.add(a.getArrival());
-           // places[place_count] = a.getArrival();
-            //place_count++;
-            times.add(a.getDepartureTime());
-            arrivals.add(b.getArrival());
-           // places[place_count] = b.getArrival();
-            times.add(b.getDepartureTime());
-        /**임시**/
-      //  }
+        JSONObject businfoObject = null;
+        try {
+            businfoObject = new JSONObject(businfo.getMyJSON());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        try {
+            buses = businfoObject.getJSONArray(TAG_RESULT);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        for(int i =0 ;i<buses.length(); i++){
+            JSONObject c = null;
+            try {
+                c = buses.getJSONObject(i);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            String arrival = null, departure = null;
+            int time = 0;
+            try {
+                 arrival = c.getString(TAG_ARRIVAL);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            try {
+                 departure = c.getString(TAG_DEPARTURE);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            try {
+                 time = Integer.parseInt(c.getString(TAG_TIME));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            arrivals.add(arrival);
+            departures.add(departure);
+            times.add(time);
+
+        }
+
         ArrayAdapter<String> arrivalAdapter = new ArrayAdapter<String>(
                 getApplicationContext(),
                 R.layout.support_simple_spinner_dropdown_item,

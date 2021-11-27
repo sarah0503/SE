@@ -21,6 +21,9 @@ public class AddNotice extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_notice_screen);
 
+        JsonParse insert = new JsonParse();
+        insert.execute("http://yubusin.dothome.co.kr/addnotice_insert.php");
+
         noticeInputButton = findViewById(R.id.noticeInputButton);
         inputTitleEditText = findViewById(R.id.inputTitleEditText);
         inputContentEditText = findViewById(R.id.inputContentEditText);
