@@ -43,8 +43,6 @@ public class UserLNFActivity extends AppCompatActivity {
         List<String> titleList = Arrays.asList("아이패드 분실물", "제목2", "제목3", "제목4", "제목5", "제목6", "제목7",
                 "제목8", "제목9", "제목10", "제목11", "제목12");
 
-        //ImageView
-
         List<String> explainList = Arrays.asList(
                 "천마아트센터 스타벅스 \n2021.08.16 \n 스페이스그레이, 핑크색 케이스",
                 "djkfjoiwejklajojf \nkjfdsaeojfo \n kjdfpajkwjf \nskjaiofjkejfio",
@@ -67,7 +65,6 @@ public class UserLNFActivity extends AppCompatActivity {
         for(int i = 0; i < titleList.size(); i++) {
             LNF lnf = new LNF();
             lnf.setTitle(titleList.get(i));
-            //lnf.setImage(imageList.get(i));
             lnf.setExplain(explainList.get(i));
 
             adapter.addItem(lnf);
