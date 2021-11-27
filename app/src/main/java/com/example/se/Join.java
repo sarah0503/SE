@@ -164,8 +164,8 @@ public class Join extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "회원가입이 취소되었습니다.", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getApplicationContext(), Login.class);
-                startActivity(intent);
+               // Intent intent = new Intent(getApplicationContext(), Login.class);
+               // startActivity(intent);
             }
         });
     }
