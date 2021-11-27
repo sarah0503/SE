@@ -110,6 +110,11 @@ public class Join extends AppCompatActivity {
                 passck = et_passck.getText().toString();
                 email = et_email.getText().toString();
 
+
+                if (queue != null) {
+                    queue.cancelAll(TAG);
+                }
+
                 if (name.equals("")||pass.equals("")||passck.equals("")||email.equals("")){
                     Toast.makeText(getApplicationContext(), "공백 부분을 입력해주세요.", Toast.LENGTH_SHORT).show();}
                 else if (!(pass.equals(passck))){
