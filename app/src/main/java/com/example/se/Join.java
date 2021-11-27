@@ -19,6 +19,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,6 +40,7 @@ public class Join extends AppCompatActivity {
 
     static RequestQueue queue;
     private  static final String TAG = "RESULT";
+    static String result;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,12 +64,50 @@ public class Join extends AppCompatActivity {
             public void onClick(View v) {
                 String number;
                 number = et_number.getText().toString();
-                String loadId = String.valueOf(user.getId());           //DB에서 number와 동일한 ID가 있으면 로드
+//                String loadId = String.valueOf(user.getId());           //DB에서 number와 동일한 ID가 있으면 로드
+                String URL = "http://yubusin.dothome.co.kr/join_idck.php";      // URL이 이게 맞는지 모르겠어
+
+                if(queue == null) {
+                    try {
+                        queue = Volley.newRequestQueue(Join.this);
+                    }catch (Exception e){ e.printStackTrace();}
+                }
+
+                StringRequest request = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONArray jsonObject = new JSONArray(response);
+
+                            for (int i = 0; i < jsonObject.length(); i++) {
+                                JSONObject obj = jsonObject.getJSONObject(i);
+                                result = obj.getString("result");
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener(){
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+
+                }){
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("number", number);
+                        return params;
+                    }
+                };
+                request.setTag(TAG);
+                queue.add(request);
 
                 if (number.equals("")){
                     Toast.makeText(getApplicationContext(), "입력된 값이 없습니다.", Toast.LENGTH_SHORT).show();
                 }
-                else if (et_number.equals(loadId)){
+                else if (result.equals("success")){
                     Toast.makeText(getApplicationContext(), "이미 등록된 사용자입니다.", Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -77,14 +120,53 @@ public class Join extends AppCompatActivity {
         btn_emailck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String loademail = String.valueOf(user.getEmail());
+//                String loademail = String.valueOf(user.getEmail());
                 String email;
                 email = et_email.getText().toString();
+
+                String URL = "http://yubusin.dothome.co.kr/join_emailck.php";      // URL이 이게 맞는지 모르겠어
+
+                if(queue == null) {
+                    try {
+                        queue = Volley.newRequestQueue(Join.this);
+                    }catch (Exception e){ e.printStackTrace();}
+                }
+
+                StringRequest request = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONArray jsonObject = new JSONArray(response);
+
+                            for (int i = 0; i < jsonObject.length(); i++) {
+                                JSONObject obj = jsonObject.getJSONObject(i);
+                                result = obj.getString("result");
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener(){
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+
+                }){
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("email", email);
+                        return params;
+                    }
+                };
+                request.setTag(TAG);
+                queue.add(request);
 
                 if (email.equals("")){
                     Toast.makeText(getApplicationContext(), "입력된 값이 없습니다.", Toast.LENGTH_SHORT).show();
                 }
-                else if (email.equals(loademail)){
+                else if (result.equals("success")){
                     Toast.makeText(getApplicationContext(), "이미 사용중인 이메일입니다.", Toast.LENGTH_SHORT).show();
                 }
                 else {
