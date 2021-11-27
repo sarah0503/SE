@@ -41,40 +41,7 @@ public class AddNotice extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_notice_screen);
 
-        String addURL = ("http://yubusin.dothome.co.kr/addnotice_insert.php");
-//        if (queue != null) {
-//            queue.cancelAll(TAG);
-//        }
 
-        if(queue == null) {
-            try {
-                queue = Volley.newRequestQueue(AddNotice.this);
-            }catch (Exception e){ e.printStackTrace();}
-        }
-
-        StringRequest request = new StringRequest(Request.Method.POST, addURL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-//                        try
-            }
-        }, new Response.ErrorListener(){
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("id", "1");
-                params.put("title", title);
-                params.put("content", content);
-                return params;
-
-            }
-        };
-        request.setTag(TAG);
 
         noticeInputButton = findViewById(R.id.noticeInputButton);
         inputTitleEditText = findViewById(R.id.inputTitleEditText);
@@ -89,13 +56,43 @@ public class AddNotice extends AppCompatActivity {
                 title = inputTitleEditText.getText().toString();
                 content = inputContentEditText.getText().toString();
                 //notice.setDate(); 당일 날짜 저장
+                String addURL = ("http://yubusin.dothome.co.kr/addnotice_insert.php");
+        if (queue != null) {
+            queue.cancelAll(TAG);
+        }
 
+                if(queue == null) {
+                    try {
+                        queue = Volley.newRequestQueue(AddNotice.this);
+                    }catch (Exception e){ e.printStackTrace();}
+                }
+
+                StringRequest request = new StringRequest(Request.Method.POST, addURL, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                    }
+                }, new Response.ErrorListener(){
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+
+                }){
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("title", title);
+                        params.put("content", content);
+                        return params;
+
+                    }
+                };
+                request.setTag(TAG);
                 queue.add(request);
 
 
                 //완료 버튼 누르면 입력한 내용 저장하기
-
-
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                 Toast.makeText(builder.getContext(), "완료되었습니다.", Toast.LENGTH_LONG).show();

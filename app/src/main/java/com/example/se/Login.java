@@ -37,6 +37,7 @@ public class Login extends AppCompatActivity {
 
 
     static RequestQueue queue;
+    static RequestQueue queue1;
     private  static final String TAG = "RESULT";
     static String result;
 
@@ -60,6 +61,9 @@ public class Login extends AppCompatActivity {
                 id = editTextID.getText().toString();
                 pass = editTextPassword.getText().toString();
                 String URL = "http://yubusin.dothome.co.kr/login_chk.php";
+                if (queue != null) {
+                    queue.cancelAll(TAG);
+                }
 
                 if(queue == null) {
                     try {
@@ -67,19 +71,9 @@ public class Login extends AppCompatActivity {
                     }catch (Exception e){ e.printStackTrace();}
                 }
 
-                StringRequest request = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+                StringRequest request1 = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        try {
-                            JSONArray jsonObject = new JSONArray(response);
-
-                            for (int i = 0; i < jsonObject.length(); i++) {
-                                JSONObject obj = jsonObject.getJSONObject(i);
-                                result = obj.getString("result");
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
                     }
                 }, new Response.ErrorListener(){
                     @Override
@@ -96,8 +90,44 @@ public class Login extends AppCompatActivity {
                         return params;
                     }
                 };
-                request.setTag(TAG);
-                queue.add(request);
+                request1.setTag(TAG);
+                queue.add(request1);
+
+
+                if (queue1 != null) {
+                    queue1.cancelAll(TAG);
+                }
+
+                if(queue1 == null) {
+                    try {
+                        queue1 = Volley.newRequestQueue(Login.this);
+                    }catch (Exception e){ e.printStackTrace();}
+                }
+
+                StringRequest request2 = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONArray jsonObject = new JSONArray(response);
+
+                            for (int i = 0; i < jsonObject.length(); i++) {
+                                JSONObject obj = jsonObject.getJSONObject(i);
+                                result = obj.getString("result");
+                                if(result.equals("success")) break;
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener(){
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+
+                });
+                request2.setTag(TAG);
+                queue1.add(request2);
 
 
 
