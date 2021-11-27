@@ -1,11 +1,14 @@
 package com.example.se;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,14 +21,16 @@ public class ManagerLNFActivity extends AppCompatActivity {
 
     private ManagerLNFListAdapter adapter;
     private Button lnfAddButton;
-    private Button lnfDeleteButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lnf_screen);
         lnfAddButton = findViewById(R.id.lnfAddButton);
-        lnfDeleteButton = findViewById(R.id.lnfDeleteButton);
+
+        init();
+
+        getData();
 
         lnfAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,10 +39,6 @@ public class ManagerLNFActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        init();
-
-        getData();
     }
 
     private void init() {

@@ -12,10 +12,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ManagerLNFListAdapter extends RecyclerView.Adapter<ManagerLNFListAdapter.ViewHolder> {
-    private ArrayList<LNF> lnfArrayList = new ArrayList<>();
+    ArrayList<LNF> lnfArrayList = new ArrayList<>();
 
     @NonNull
     @Override
@@ -45,10 +46,10 @@ public class ManagerLNFListAdapter extends RecyclerView.Adapter<ManagerLNFListAd
                         notifyItemRangeChanged(pos, lnfArrayList.size());
 
 
-                        // 게시물 삭제하기
+                        //공지사항 삭제하기
 
 
-                        Toast.makeText(builder.getContext(), "공지사항이 삭제되었습니다.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(builder.getContext(), "게시물이 삭제되었습니다.", Toast.LENGTH_LONG).show();
                     }
                 });
                 builder.setNeutralButton("취소", new DialogInterface.OnClickListener() {

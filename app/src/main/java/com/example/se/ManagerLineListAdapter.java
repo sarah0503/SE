@@ -1,10 +1,16 @@
 package com.example.se;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +23,9 @@ import java.util.ArrayList;
 public class ManagerLineListAdapter extends RecyclerView.Adapter<ManagerLineListAdapter.ViewHolder> {
 
     private ArrayList<Bus> busArrayList = new ArrayList<>();
+    private Dialog editDialog;
+    private EditText editDeparture, editStop1, editStop2, editStop3, editArrival, editTime;
+    private Button cancelButton, addButton;
 
     @NonNull
     @Override
@@ -36,7 +45,59 @@ public class ManagerLineListAdapter extends RecyclerView.Adapter<ManagerLineList
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                editDialog = new Dialog(view.getContext());
+                editDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                editDialog.setContentView(R.layout.edit_line_screen);
+                WindowManager.LayoutParams params = editDialog.getWindow().getAttributes();
+                params.width = WindowManager.LayoutParams.MATCH_PARENT;
+                params.height = WindowManager.LayoutParams.WRAP_CONTENT;
+                editDialog.getWindow().setAttributes((WindowManager.LayoutParams) params);
 
+                // 초기화
+                editDeparture = editDialog.findViewById(R.id.editDeparture);
+                editStop1 = editDialog.findViewById(R.id.editStop1);
+                editStop2 = editDialog.findViewById(R.id.editStop2);
+                editStop3 = editDialog.findViewById(R.id.editStop3);
+                editArrival = editDialog.findViewById(R.id.editArrival);
+                editTime = editDialog.findViewById(R.id.editTime);
+
+                // editText 내용: 선택한 노선의 정보로 설정
+                editDeparture.setText(busArrayList.get(pos).getDeparture());
+                editStop1.setText(busArrayList.get(pos).getStop1());
+                editStop2.setText(busArrayList.get(pos).getStop2());
+                editStop3.setText(busArrayList.get(pos).getStop3());
+                editArrival.setText(busArrayList.get(pos).getArrival());
+
+                editDialog.show();
+
+                // 다이얼로그의 추가 버튼
+                addButton = editDialog.findViewById(R.id.editAdd);
+                addButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        busArrayList.get(pos).setDeparture(editDeparture.getText().toString());
+                        busArrayList.get(pos).setStop1(editStop1.getText().toString());
+                        busArrayList.get(pos).setStop2(editStop2.getText().toString());
+                        busArrayList.get(pos).setStop3(editStop3.getText().toString());
+                        busArrayList.get(pos).setArrival(editArrival.getText().toString());
+
+                        notifyItemChanged(pos);
+
+                        editDialog.dismiss();
+
+                        //수정 내용 저장하기
+                    }
+                });
+
+                // 다이얼로그의 취소 버튼
+                cancelButton = editDialog.findViewById(R.id.editCancel);
+                cancelButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        editDialog.dismiss();   // 닫기
+                    }
+                });
             }
         });
 
