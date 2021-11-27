@@ -1,8 +1,9 @@
 package com.example.se;
 
 public class Bookmark {
-    Boolean bookmark_on;    //DB에서 북마크 정보 가져와야함
-    int userID;             //DB에서 userID가 bookmark_on 한 것의 정보를 모두 가져와야해서 필요
+    Boolean bookmark_on;    //DB 에서 북마크 정보 가져와야함
+    int userID;             //DB 에서 userID가 bookmark_on = True 인 것의 정보를 모두 가져와야해서 필요
+
 
     void setBookmark(boolean bookmark_on){this.bookmark_on = bookmark_on;}
     Boolean getBookmark(){return this.bookmark_on;}
