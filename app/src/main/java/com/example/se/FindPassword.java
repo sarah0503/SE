@@ -11,6 +11,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Lifecycle;
 
+import com.android.volley.RequestQueue;
+
 import java.util.Objects;
 
 public class FindPassword extends AppCompatActivity {
@@ -22,6 +24,10 @@ public class FindPassword extends AppCompatActivity {
     Button btn_idCheck;
     Button btn_chPass;
     int check = 0;      //학번이 확인되었는지 아닌지 구별하는 변수
+
+    static RequestQueue queue;
+    private  static final String TAG = "RESULT";
+    static String result;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
