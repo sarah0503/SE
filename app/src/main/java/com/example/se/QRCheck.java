@@ -15,7 +15,8 @@ public class QRCheck extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = getIntent(); intent.getIntExtra("BusId", busId);
+        Intent intent = getIntent();
+        intent.getIntExtra("BusId", busId);
         new IntentIntegrator(this).initiateScan();
     }
 
@@ -27,7 +28,6 @@ public class QRCheck extends AppCompatActivity {
                 Toast.makeText(this, "다시 스캔해주세요.", Toast.LENGTH_LONG).show();
                 // todo
             } else {
-                //Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
                 // todo
                 String resultStr = result.toString();
                 String QRUserId = resultStr.split(",")[1];
