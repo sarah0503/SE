@@ -110,14 +110,19 @@ public class Join extends AppCompatActivity {
                 passck = et_passck.getText().toString();
                 email = et_email.getText().toString();
 
+
+                if (queue != null) {
+                    queue.cancelAll(TAG);
+                }
+
                 if (name.equals("")||pass.equals("")||passck.equals("")||email.equals("")){
                     Toast.makeText(getApplicationContext(), "공백 부분을 입력해주세요.", Toast.LENGTH_SHORT).show();}
-                else if (!(pass.equals(passck))){
-                    Toast.makeText(getApplicationContext(), "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();}
-                else if (!(btn_numck.isClickable())){
-                    Toast.makeText(getApplicationContext(), "학번확인을 하세요.", Toast.LENGTH_SHORT).show();}
-                else if (!(btn_emailck.isClickable())){
-                    Toast.makeText(getApplicationContext(), "이메일 중복확인을 하세요.", Toast.LENGTH_SHORT).show();}
+//                else if (!(pass.equals(passck))){
+//                    Toast.makeText(getApplicationContext(), "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();}
+//                else if (!(btn_numck.isClickable())){
+//                    Toast.makeText(getApplicationContext(), "학번확인을 하세요.", Toast.LENGTH_SHORT).show();}
+//                else if (!(btn_emailck.isClickable())){
+//                    Toast.makeText(getApplicationContext(), "이메일 중복확인을 하세요.", Toast.LENGTH_SHORT).show();}
                 else {
                     //학번(ID), Password, 이름, email 을 저장해야함
 
@@ -158,14 +163,18 @@ public class Join extends AppCompatActivity {
                     queue.add(request);
 
                     Toast.makeText(getApplicationContext(), "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();}
+                if (queue != null) {
+                    queue.cancelAll(TAG);
+                }
+
             }
         });
         btn_cancle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "회원가입이 취소되었습니다.", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getApplicationContext(), Login.class);
-                startActivity(intent);
+               // Intent intent = new Intent(getApplicationContext(), Login.class);
+               // startActivity(intent);
             }
         });
     }

@@ -7,8 +7,10 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:usesCleartextTraffic="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.SE">
+
         <activity android:name=".Reservation_screen"
             android:exported="true"
             android:usesCleartextTraffic="true"><intent-filter>
@@ -51,21 +53,7 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter></activity>
 
-        <activity android:name=".AddNotice"
-            android:exported="true"
-            android:usesCleartextTraffic="true"><intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
-
         <activity android:name=".ManagerLNFActivity"
-            android:exported="true"
-            android:usesCleartextTraffic="true"><intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
-
-        <activity android:name=".AddLNF"
             android:exported="true"
             android:usesCleartextTraffic="true"><intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -181,5 +169,7 @@
         </activity>
 
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
+
 
 </manifest>

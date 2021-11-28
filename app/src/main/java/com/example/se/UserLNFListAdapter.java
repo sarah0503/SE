@@ -4,6 +4,8 @@ import android.app.Dialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,7 +21,6 @@ public class UserLNFListAdapter extends RecyclerView.Adapter<UserLNFListAdapter.
     private ArrayList<LNF> lnfArrayList = new ArrayList<>();
     private Dialog detailDialog;
     private TextView title, explain;
-    private ImageView image;
     private Button closeButton;
 
     @NonNull
@@ -42,15 +43,18 @@ public class UserLNFListAdapter extends RecyclerView.Adapter<UserLNFListAdapter.
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
 
                 detailDialog = new Dialog(view.getContext());
+                detailDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 detailDialog.setContentView(R.layout.user_lnf_detail);
+                WindowManager.LayoutParams params = detailDialog.getWindow().getAttributes();
+                params.width = WindowManager.LayoutParams.MATCH_PARENT;
+                params.height = WindowManager.LayoutParams.WRAP_CONTENT;
+                detailDialog.getWindow().setAttributes((WindowManager.LayoutParams) params);
 
                 title = detailDialog.findViewById(R.id.lnfTitle);
-                image = detailDialog.findViewById(R.id.lnfImage);
                 explain = detailDialog.findViewById(R.id.lnfExplain);
 
                 //lnfArrayList 저장된 내용 가져와서 dialog로 표시하기
                 title.setText("" + lnfArrayList.get(pos).getTitle());
-                //image.setImage...
                 explain.setText("" + lnfArrayList.get(pos).getExplain());
 
                 detailDialog.show();
