@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
-public class Watiting_check {
+public class Waiting_check {
     // 버스 아이디, 사용자 아이디, 대기번호, 출발지, 도착지, 시간 정보를 가져와야함 Waiting에서
     //  사용자의 ID의 정보를 가진 예약 내역을 불러온다.
 
