@@ -58,7 +58,7 @@ public class Information_screen extends AppCompatActivity {
         waitingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Watiting_check.class);
+                Intent intent = new Intent(getApplicationContext(), Waiting_check.class);
                 intent.putExtra("Id" ,id);
                 startActivity(intent);
             }
