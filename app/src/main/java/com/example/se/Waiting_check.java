@@ -1,7 +1,11 @@
 package com.example.se;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,11 +14,22 @@ import java.util.ArrayList;
 public class Waiting_check extends AppCompatActivity{
 
     ArrayList<Waiting> waitingList;
+    Button btn_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.waiting_check);
+
+        btn_back = (Button) findViewById(R.id.btn_back);
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Information_screen.class);
+                startActivity(intent);
+            }
+        });
 
         this.InputWaitingData();
 

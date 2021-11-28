@@ -45,10 +45,10 @@ public class Reservtion_checkAdapter extends BaseAdapter {
         TextView userArrival = (TextView)view.findViewById(R.id.userArrival);
         TextView time = (TextView)view.findViewById(R.id.time);
 
-        busid.setText(reservation.get(position).getBusId());
+        busid.setText(Integer.toString(reservation.get(position).getBusId()));
         userDeparture.setText(reservation.get(position).getDeparture());
         userArrival.setText(reservation.get(position).getArrival());
-        time.setText(reservation.get(position).getTime());
+        time.setText(Integer.toString(reservation.get(position).getTime()));
 
         return view;
     }
