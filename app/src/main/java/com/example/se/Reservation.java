@@ -1,6 +1,7 @@
 package com.example.se;
 
 public class Reservation {
+    // 버스아이디, 출발지, 도착지, 출발시간
     public static int count = 0;
     private int busId;
     private int userId;
@@ -12,6 +13,14 @@ public class Reservation {
     Reservation(){
         reservationId = count;
         count ++;
+    }
+
+    //Reservation_check 에 사용할 생성자
+    Reservation(int busId, String arrival, String departure, int time){
+        this.busId = busId;
+        this.arrival = arrival;
+        this.departure = departure;
+        this.time = time;
     }
 
     public void setBusId(int busId) {

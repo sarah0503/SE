@@ -1,6 +1,7 @@
 package com.example.se;
 
 public class Waiting {
+    // 대기 번호, 버스 아이디, 출발지, 도착지, 출발 시간
     public static int count = 0;
     private int busId;
     private int userId;
@@ -13,6 +14,15 @@ public class Waiting {
     Waiting(){
         waitingId = count;
         count ++;
+    }
+
+    //Waiting_check 에 사용할 생성자
+    public Waiting(int busId, int time, int waitingCount, String arrival, String departure) {
+        this.busId = busId;
+        this.time = time;
+        this.waitingCount = waitingCount;
+        this.arrival = arrival;
+        this.departure = departure;
     }
 
     public void setWaitingCount(int waitingCount) {
