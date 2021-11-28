@@ -28,8 +28,13 @@ public class Information_screen extends AppCompatActivity {
         pwEditText = (EditText) findViewById(R.id.pwEditText);
 
         name = nameEditText.getText().toString();
-        id = iDEditText.getText().toString();
-        pw = pwEditText.getText().toString();
+
+        Intent intent = new Intent(getApplicationContext(), Information_screen.class);
+        intent.putExtra("Id", id);
+        intent.putExtra("Pass", pw);
+
+        iDEditText.setText(id);
+        pwEditText.setText(pw);
 
 
         reservationButton.setOnClickListener(new View.OnClickListener() {
