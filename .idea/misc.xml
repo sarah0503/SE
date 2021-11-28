@@ -29,7 +29,8 @@
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/notice_screen.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/penalty_listview_item.xml" value="0.1453804347826087" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/penaltyactivity_main.xml" value="0.1453804347826087" />
-        <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/reservation_check.xml" value="0.264" />
+        <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/reservation_check.xml" value="0.20179372197309417" />
+        <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/reservation_check_item.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/reservation_check_screen.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/reservation_screen.xml" value="0.25" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/resevation_screen.xml" value="0.25364583333333335" />
@@ -42,7 +43,7 @@
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/user_lnf_screen.xml" value="0.6" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/user_notice.xml" value="0.1265625" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/user_notice_screen.xml" value="0.1265625" />
-        <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/waiting_check.xml" value="0.264" />
+        <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/waiting_check.xml" value="0.1" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/waiting_check_item.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/waiting_screen.xml" value="0.1265625" />
         <entry key="..\:/Users/leehb/Documents/GitHub/SE/app/src/main/res/drawable/check_box_icon.xml" value="0.26979166666666665" />

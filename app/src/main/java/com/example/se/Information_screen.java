@@ -35,5 +35,19 @@ public class Information_screen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        reservationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Reservation_check.class);
+                startActivity(intent);
+            }
+        });
+        waitingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Waiting_check.class);
+                startActivity(intent);
+            }
+        });
     }
 }

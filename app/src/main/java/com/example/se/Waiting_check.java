@@ -1,29 +1,35 @@
 package com.example.se;
 
 import android.os.Bundle;
+import android.widget.ListView;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
-public class Waiting_check {
-    // 버스 아이디, 사용자 아이디, 대기번호, 출발지, 도착지, 시간 정보를 가져와야함 Waiting에서
-    //  사용자의 ID의 정보를 가진 예약 내역을 불러온다.
+public class Waiting_check extends AppCompatActivity{
 
-    User user = new User();
-    int userID = user.getId();
-    Waiting waiting = new Waiting();
-    int waitUserID = waiting.getUserId();
-//    Waiting a = new Waiting();        // ?
-//    int busId = a.getBusId();
-//    int count = a.getWaitingId();
-//    String arrival = a.getArrival();
-//    String departure = a.getDeparture();
-//    int time = a.getTime();
+    ArrayList<Waiting> waitingList;
 
-    public int getWaitUserID() { return waitUserID; }
-    public int getUserID(){ return userID; }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.waiting_check);
 
-    ArrayList<Object> waitinglist = new ArrayList<Object>();
+        this.InputWaitingData();
+
+        ListView listView = (ListView)findViewById(R.id.listView);
+        final Waiting_checkAdapter adapter = new Waiting_checkAdapter(this,waitingList);
+
+        listView.setAdapter(adapter);
+    }
+    public void InputWaitingData()
+    {
+        waitingList = new ArrayList<Waiting>();
+
+        // int busId, int time, int waitingCount, String arrival, String departure
+        waitingList.add(new Waiting(2345, 9, 23, "반월당", "영남대"));
+        waitingList.add(new Waiting(2678, 7, 5, "영남대", "대공원역"));
+        waitingList.add(new Waiting(2901, 15, 19, "수성구청역", "영남대"));
+    }
 }
