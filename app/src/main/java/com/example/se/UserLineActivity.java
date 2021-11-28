@@ -27,9 +27,6 @@ public class UserLineActivity extends AppCompatActivity {
     private UserLineListAdapter adapter;
 
 
-    static RequestQueue queue;
-    private  static final String TAG = "RESULT";
-
 
     final    ArrayList<String> departureList = new ArrayList<String>();// = Arrays.asList("영남대역", "출발지2", "출발지3", "출발지4", "출발지5", "출발지6", "출발지7",
     //  "출발지8", "출발지9", "출발지10", "출발지11", "출발지12", "출발지13", "출발지14");
@@ -51,7 +48,6 @@ public class UserLineActivity extends AppCompatActivity {
 
         ArrayList<Integer> seatList = new ArrayList <Integer> ();;//= Arrays.asList("45", "2
 
-    String URL1 = "http://yubusin.dothome.co.kr/managerlineactivity_businfo.php";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -77,44 +73,10 @@ public class UserLineActivity extends AppCompatActivity {
 
     private void getData() {
 
-        if(queue == null) {
-            try {
-                queue = Volley.newRequestQueue(UserLineActivity.this);
-            }catch (Exception e){ e.printStackTrace();}
-        }
         /******************************임의 데이터******************************/
 //5", "22", "32", "43", "12", "16", "23", "35", "5", "11", "28", "33", "40");
         //int[] seatList = {45, 25, 22, 32, 43, 12, 16, 23, 35, 5, 11, 28, 33, 40};
 
-        StringRequest request = new StringRequest(Request.Method.GET, URL1, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONArray jsonObject = new JSONArray(response);
-
-                    for (int i = 0; i < jsonObject.length(); i++) {
-                        JSONObject obj = jsonObject.getJSONObject(i);
-                        departureList.add(obj.getString("destpnt"));
-                        stop1List.add(obj.getString("waypnt1"));
-                        stop2List.add(obj.getString("waypnt2"));
-                        stop3List.add(obj.getString("waypnt3"));
-                        arrivalList.add(obj.getString("startpnt"));
-                        timeList.add(Integer.parseInt(obj.getString("starttime")));
-                        seatList.add(Integer.parseInt(obj.getString("reservseat")));
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener(){
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-
-        });
-        request.setTag(TAG);
-        queue.add(request);
 
         /******************************임의 데이터******************************/
 
