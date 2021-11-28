@@ -142,22 +142,23 @@ public class Reservation_screen extends AppCompatActivity {
                     failureDialog.setPositiveButton("대기 ", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            MainActivity.waitings[Waiting.count] = (Waiting) new Waiting();
-                            /**얘네 다 필요 없을 듯
-                             MainActivity.waitings[Waiting.count-1].setTime(time);
-                             MainActivity.waitings[Waiting.count-1].setArrival(arrival);
-                             MainActivity.waitings[Waiting.count-1].setDeparture(departure); **/
-
-                            String waitingCount = Integer.toString(currentBus.getWaitingCount());
-                            MainActivity.waitings[Waiting.count-1].setWaitingCount(Integer.parseInt(waitingCount));
+//                            MainActivity.waitings[Waiting.count] = (Waiting) new Waiting();
+//                            /**얘네 다 필요 없을 듯
+//                             MainActivity.waitings[Waiting.count-1].setTime(time);
+//                             MainActivity.waitings[Waiting.count-1].setArrival(arrival);
+//                             MainActivity.waitings[Waiting.count-1].setDeparture(departure); **/
+//
+//                            String waitingCount = Integer.toString(currentBus.getWaitingCount());
+//                            MainActivity.waitings[Waiting.count-1].setWaitingCount(Integer.parseInt(waitingCount));
 
                             /***********DB**************/
                             //디비에 대기 정보 저장
 
                             /**디비쓰면 얘네 필요 없을수도,,**/
-                            MainActivity.waitings[Waiting.count-1].setBusId(currentBus.id);
-                            currentBus.increaseWaitingCount();
-                            MainActivity.waitings[Waiting.count-1].setUserId(MainActivity.currentUser.getUserID());
+//                            MainActivity.waitings[Waiting.count-1].setBusId(currentBus.id);
+//                            currentBus.increaseWaitingCount();
+//                            MainActivity.waitings[Waiting.count-1].setUserId(MainActivity.currentUser.getUserID());
+                            int waitingCount = 0;
 
 
 
@@ -176,7 +177,7 @@ public class Reservation_screen extends AppCompatActivity {
                 }//예약 실패 ==> 대기
                 else{
 
-                    MainActivity.reservations[Reservation.count] = new Reservation();
+//                    MainActivity.reservations[Reservation.count] = new Reservation();
                     /**얘네 다 필요 없을 듯
                      MainActivity.reservations[Reservation.count-1].setArrival(arrival);
                      MainActivity.reservations[Reservation.count-1].setDeparture(departure);
@@ -186,9 +187,9 @@ public class Reservation_screen extends AppCompatActivity {
                     //디비에 예매 정보 저장
 
                     /**디비쓰면 얘네 필요 없을수도,,**/
-                    MainActivity.reservations[Reservation.count-1].setBusId(currentBus.id);
-                    MainActivity.reservations[Reservation.count-1].setUserId(MainActivity.currentUser.getUserID());
-                    currentBus.increaseCurrentCapacity();
+//                    MainActivity.reservations[Reservation.count-1].setBusId(currentBus.id);
+//                    MainActivity.reservations[Reservation.count-1].setUserId(MainActivity.currentUser.getUserID());
+//                    currentBus.increaseCurrentCapacity();
 
                     AlertDialog.Builder reservationDialog = new AlertDialog.Builder(Reservation_screen.this);
                     reservationDialog.setMessage("예약이 완료되었습니다. ");
