@@ -46,11 +46,11 @@ public class Waiting_checkAdapter extends BaseAdapter {
         TextView time = (TextView)view.findViewById(R.id.time);
         TextView count = (TextView)view.findViewById(R.id.count);
 
-        busid.setText(waiting.get(position).getBusId());
+        busid.setText(Integer.toString(waiting.get(position).getBusId()));
         userDeparture.setText(waiting.get(position).getDeparture());
         userArrival.setText(waiting.get(position).getArrival());
-        time.setText(waiting.get(position).getTime());
-        count.setText(waiting.get(position).getWaitingCount());
+        time.setText(Integer.toString(waiting.get(position).getTime()));
+        count.setText(Integer.toString(waiting.get(position).getWaitingCount()));
 
         return view;
     }

@@ -9,26 +9,26 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class Reservtion_checkAdapter extends BaseAdapter {
+public class Bookmark_checkAdapter extends BaseAdapter {
 
-    Context rContext = null;
-    LayoutInflater rLayoutInflater = null;
-    ArrayList<Reservation> reservation;
+    Context bContext = null;
+    LayoutInflater bLayoutInflater = null;
+    ArrayList<Bookmark> bookmark;
 
-    public Reservtion_checkAdapter(Context context, ArrayList<Reservation> data){
-        rContext = context;
-        reservation = data;
-        rLayoutInflater = LayoutInflater.from(rContext);
+    public Bookmark_checkAdapter(Context context, ArrayList<Bookmark> data){
+        bContext = context;
+        bookmark = data;
+        bLayoutInflater = LayoutInflater.from(bContext);
     }
 
     @Override
     public int getCount() {
-        return reservation.size();
+        return bookmark.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return reservation.get(position);
+        return bookmark.get(position);
     }
 
     @Override
@@ -38,17 +38,17 @@ public class Reservtion_checkAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = rLayoutInflater.inflate(R.layout.reservation_check_item, null);
+        View view = bLayoutInflater.inflate(R.layout.bookmark_check_item, null);
 
         TextView busid = (TextView)view.findViewById(R.id.busid);
         TextView userDeparture = (TextView)view.findViewById(R.id.userDeparture);
         TextView userArrival = (TextView)view.findViewById(R.id.userArrival);
         TextView time = (TextView)view.findViewById(R.id.time);
 
-        busid.setText(Integer.toString(reservation.get(position).getBusId()));
-        userDeparture.setText(reservation.get(position).getDeparture());
-        userArrival.setText(reservation.get(position).getArrival());
-        time.setText(Integer.toString(reservation.get(position).getTime()));
+        busid.setText(Integer.toString(bookmark.get(position).getBusId()));
+        userDeparture.setText(bookmark.get(position).getDeparture());
+        userArrival.setText(bookmark.get(position).getArrival());
+        time.setText(Integer.toString(bookmark.get(position).getTime()));
 
         return view;
     }
