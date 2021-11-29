@@ -139,10 +139,6 @@ public class ManagerLineListAdapter extends RecyclerView.Adapter<ManagerLineList
         return busArrayList.size();
     }
 
-    public ArrayList getList() {
-        return busArrayList;
-    }
-
     void addItem(Bus bus) {
         busArrayList.add(bus);
     }
