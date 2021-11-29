@@ -67,6 +67,7 @@ public class ManagerLineListAdapter extends RecyclerView.Adapter<ManagerLineList
                 editStop2.setText(busArrayList.get(pos).getStop2());
                 editStop3.setText(busArrayList.get(pos).getStop3());
                 editArrival.setText(busArrayList.get(pos).getArrival());
+                editTime.setText(busArrayList.get(pos).getDepartureTime()+"");
 
                 editDialog.show();
 
@@ -81,12 +82,11 @@ public class ManagerLineListAdapter extends RecyclerView.Adapter<ManagerLineList
                         busArrayList.get(pos).setStop2(editStop2.getText().toString());
                         busArrayList.get(pos).setStop3(editStop3.getText().toString());
                         busArrayList.get(pos).setArrival(editArrival.getText().toString());
+                        busArrayList.get(pos).setDepartureTime(Integer.parseInt(editTime.getText().toString()));
 
                         notifyItemChanged(pos);
 
                         editDialog.dismiss();
-
-                        //수정 내용 저장하기
                     }
                 });
 
@@ -153,6 +153,7 @@ public class ManagerLineListAdapter extends RecyclerView.Adapter<ManagerLineList
         private TextView stop1TextView;
         private TextView stop2TextView;
         private TextView stop3TextView;
+        private TextView timeTextView;
         private CheckBox checkBox;
 
         ViewHolder(@NonNull View itemView){
@@ -163,6 +164,7 @@ public class ManagerLineListAdapter extends RecyclerView.Adapter<ManagerLineList
             stop1TextView = itemView.findViewById(R.id.stop1TextView);
             stop2TextView = itemView.findViewById(R.id.stop2TextView);
             stop3TextView = itemView.findViewById(R.id.stop3TextView);
+            timeTextView = itemView.findViewById(R.id.timeTextView);
             checkBox = itemView.findViewById(R.id.checkBox);
 
         }
@@ -173,6 +175,7 @@ public class ManagerLineListAdapter extends RecyclerView.Adapter<ManagerLineList
             stop2TextView.setText(bus.getStop2());
             stop3TextView.setText(bus.getStop3());
             arrivalTextView.setText(bus.getArrival());
+            timeTextView.setText(bus.getDepartureTime()+"");
         }
 
     }

@@ -1,16 +1,23 @@
 package com.example.se;
 
-import android.content.Intent;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,6 +25,13 @@ public class ManagerLineActivity extends AppCompatActivity {
 
     private ManagerLineListAdapter adapter;
     private Button addButton;
+
+    private Dialog addDialog;
+    private Spinner departureSpinner, arrivalSpinner, timeSpinner;
+    private Button cancelButton, addLineButton;
+    private ArrayList<String> departureList, arrivalList, timeList;
+    private ArrayAdapter<String> departureAdapter, arrivalAdapter, timeAdapter;
+    private Bus bus = new Bus();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,8 +46,108 @@ public class ManagerLineActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() { //노선 추가 버튼을 눌렀을 때
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AddLine.class);
-                startActivity(intent);
+                addDialog = new Dialog(v.getContext());
+                addDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                addDialog.setContentView(R.layout.add_line_screen);
+                WindowManager.LayoutParams params = addDialog.getWindow().getAttributes();
+                params.width = WindowManager.LayoutParams.MATCH_PARENT;
+                params.height = WindowManager.LayoutParams.WRAP_CONTENT;
+                addDialog.getWindow().setAttributes((WindowManager.LayoutParams) params);
+
+                addDialog.show();
+
+                departureList = new ArrayList<>();
+                departureList.add("추가 출발지1"); departureList.add("추가 출발지2"); departureList.add("추가 출발지3");
+                departureList.add("추가 출발지4"); departureList.add("추가 출발지5");
+
+                departureSpinner = (Spinner) addDialog.findViewById(R.id.departureAddSpinner);
+                departureAdapter = new ArrayAdapter<String>(v.getContext(),android.R.layout.simple_spinner_dropdown_item,departureList);
+                departureSpinner.setAdapter(departureAdapter);
+                departureSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        bus.setDeparture(departureList.get(i));
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(adapterView.getContext());
+                        builder.setTitle("Confirm");
+                        builder.setMessage("출발지가 선택되지 않았습니다.");
+                        builder.setPositiveButton("닫기", null);
+                        builder.create().show();
+                    }
+                });
+
+                arrivalList = new ArrayList<>();
+                arrivalList.add("추가 도착지1"); arrivalList.add("추가 도착지2"); arrivalList.add("추가 도착지3");
+                arrivalList.add("추가 도착지4"); arrivalList.add("추가 도착지5");
+
+                arrivalSpinner = (Spinner) addDialog.findViewById(R.id.arrivalAddSpinner);
+                arrivalAdapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_dropdown_item,arrivalList);
+                arrivalSpinner.setAdapter(arrivalAdapter);
+                arrivalSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        bus.setArrival(arrivalList.get(i));
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(adapterView.getContext());
+                        builder.setTitle("Confirm");
+                        builder.setMessage("도착지가 선택되지 않았습니다.");
+                        builder.setPositiveButton("닫기", null);
+                        builder.create().show();
+                    }
+                });
+
+                timeList = new ArrayList<>();
+                timeList.add("8"); timeList.add("13"); timeList.add("9"); timeList.add("5"); timeList.add("16");
+
+                timeSpinner = (Spinner) addDialog.findViewById(R.id.timeAddSpinner);
+                timeAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, timeList);
+                timeSpinner.setAdapter(timeAdapter);
+                timeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        int time =  Integer.parseInt(timeList.get(i));
+                        bus.setDepartureTime(time);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(adapterView.getContext());
+                        builder.setTitle("Confirm");
+                        builder.setMessage("시간이 선택되지 않았습니다.");
+                        builder.setPositiveButton("닫기", null);
+                        builder.create().show();
+                    }
+                });
+
+                cancelButton = addDialog.findViewById(R.id.cancelButton);
+                addLineButton = addDialog.findViewById(R.id.addButton);
+
+                addLineButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        bus.setStop1("추가된 경유지1");
+                        bus.setStop2("추가된 경유지2");
+                        bus.setStop3("추가된 경유지3");
+
+                        adapter.addItem(bus);
+                        adapter.notifyDataSetChanged();
+
+                        addDialog.dismiss();
+                    }
+                });
+
+                cancelButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        addDialog.dismiss();
+                    }
+                });
             }
         });
     }
@@ -51,8 +165,7 @@ public class ManagerLineActivity extends AppCompatActivity {
 
     private void getData() {
 
-        /******************************임의 데이터******************************/
-
+        //임의 데이터
         List<String> departureList = Arrays.asList("영남대역", "출발지2", "출발지3", "출발지4", "출발지5", "출발지6", "출발지7",
                 "출발지8", "출발지9", "출발지10", "출발지11", "출발지12", "출발지13", "출발지14");
 
@@ -71,8 +184,6 @@ public class ManagerLineActivity extends AppCompatActivity {
         int[] timeList = {6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19};
 
         int[] seatList = {45, 25, 22, 32, 43, 12, 16, 23, 35, 5, 11, 28, 33, 40};
-
-        /**********************************************************************/
 
         for(int i = 0; i < departureList.size(); i++) {
             Bus bus = new Bus();
