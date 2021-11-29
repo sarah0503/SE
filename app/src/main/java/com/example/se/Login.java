@@ -56,7 +56,7 @@ public class Login extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String id;                                          // DB에서 가져오는 ID이면 이게 int로 둬야하는지 String으로 둬야하는지..?
+                String id;
                 String pass;
                 id = editTextID.getText().toString();
                 pass = editTextPassword.getText().toString();
