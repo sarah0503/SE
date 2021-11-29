@@ -15,6 +15,11 @@ public class Home_screen  extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
+        Intent intent = getIntent();
+        final String id, pass;
+        id = intent.getStringExtra("Id");
+        pass = intent.getStringExtra("Pass");
+
         informationButton = (Button) findViewById(R.id.informationButton);
         reservationButton = (Button) findViewById(R.id.reservationButton);
         lineButton = (Button) findViewById(R.id.lineButton);
@@ -25,6 +30,8 @@ public class Home_screen  extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Information_screen.class);
+                intent.putExtra("Id", id);
+                intent.putExtra("Pass", pass);
                 startActivity(intent);
             }
         });
