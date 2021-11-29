@@ -69,6 +69,7 @@ public class Login extends AppCompatActivity {
                 else if (result.equals("fail")){
                     Toast.makeText(getApplicationContext(), "로그인 정보가 잘못되었습니다.", Toast.LENGTH_SHORT).show();
                     }
+                //테스트용 
                 else if(id.equals("manager")){
 
                     Toast.makeText(getApplicationContext(), "관리자 로그인되었습니다.", Toast.LENGTH_SHORT).show();
