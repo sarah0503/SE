@@ -10,28 +10,30 @@ import android.view.View;
 import android.widget.*;
 
 public class Information_screen extends AppCompatActivity {
-    Button modifyButton, withdrawButton, reservationButton, waitingButton, bookmarkButton;
+    Button modifyButton, withdrawButton, logoutButton, reservationButton, waitingButton, bookmarkButton;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.information_screen);
         modifyButton = (Button) findViewById(R.id.modifyButton);
         withdrawButton = (Button) findViewById(R.id.withdrawButton);
+        logoutButton = (Button) findViewById(R.id.logoutButton);
         reservationButton = (Button) findViewById(R.id.reservationButton);
         waitingButton = (Button) findViewById(R.id.waitingButton);
         bookmarkButton = (Button) findViewById(R.id.bookmarkButton);
 
-        reservationButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), Reservation_check.class);
-//                startActivity(intent);
-            }
-        });
         modifyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ModifyInformation_check.class);
+                startActivity(intent);
+            }
+        });
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "로그아웃되었습니다.", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), Login.class);
                 startActivity(intent);
             }
         });
