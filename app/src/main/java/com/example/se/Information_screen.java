@@ -49,5 +49,12 @@ public class Information_screen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        bookmarkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Bookmark_check.class);
+                startActivity(intent);
+            }
+        });
     }
 }

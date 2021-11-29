@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10dp">
@@ -17,6 +18,26 @@
         android:layout_marginHorizontal="10dp">
 
         <TextView
+            android:id="@+id/busID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:text="버스 ID"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_marginRight="15dp"/>
+
+        <TextView
+            android:id="@+id/busid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:text="TextView"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_marginRight="80dp"/>
+
+        <TextView
             android:id="@+id/userDeparture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,34 +48,15 @@
             android:textColor="@color/black"/>
 
         <TextView
-            android:id="@+id/userStop1"
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:includeFontPadding="false"
-            android:text="경유지1"
-            android:textSize="13sp"
             android:layout_marginRight="10dp"
-            android:textColor="#707070"/>
-
-        <TextView
-            android:id="@+id/userStop2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:includeFontPadding="false"
-            android:text="경유지2"
-            android:textSize="13sp"
-            android:layout_marginRight="10dp"
-            android:textColor="#707070"/>
-
-        <TextView
-            android:id="@+id/userStop3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:includeFontPadding="false"
-            android:text="경유지3"
-            android:textSize="13sp"
-            android:layout_marginRight="10dp"
-            android:textColor="#707070"/>
+            android:gravity="center"
+            android:text="->"
+            android:textSize="15dp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/userArrival"
@@ -62,8 +64,8 @@
             android:layout_height="wrap_content"
             android:includeFontPadding="false"
             android:text="도착지"
-            android:textSize="15sp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="15sp" />
 
     </LinearLayout>
 
@@ -81,16 +83,17 @@
         app:layout_constraintTop_toBottomOf="@+id/linear"/>
 
     <TextView
-        android:id="@+id/userSeat"
+        android:id="@+id/time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:includeFontPadding="false"
-        android:text="잔여좌석"
-        android:textSize="13sp"
-        android:textColor="#707070"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linear"/>
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="8dp"
+        android:includeFontPadding="false"
+        android:text="time"
+        android:textColor="#707070"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
