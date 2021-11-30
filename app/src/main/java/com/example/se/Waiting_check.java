@@ -15,6 +15,7 @@ public class Waiting_check extends AppCompatActivity{
 
     ArrayList<Waiting> waitingList;
     Button btn_back;
+    Button btn_cancle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,7 @@ public class Waiting_check extends AppCompatActivity{
         setContentView(R.layout.waiting_check);
 
         btn_back = (Button) findViewById(R.id.btn_back);
+        btn_cancle = (Button) findViewById(R.id.btn_cancle);
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,6 +32,13 @@ public class Waiting_check extends AppCompatActivity{
                 startActivity(intent);
             }
         });
+
+//        btn_cancle.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                // 삭제 버튼 누르면 목록에서 사라져야함
+//            }
+//        });
 
         this.InputWaitingData();
 

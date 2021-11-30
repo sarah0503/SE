@@ -15,7 +15,7 @@ public class ModifyInformation_check extends AppCompatActivity {
     EditText et_pass;
     Button btn_ok;
     Button btn_back;
-    
+
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
