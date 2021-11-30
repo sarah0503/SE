@@ -27,8 +27,7 @@ public class Reservation_check extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Information_screen.class);
-                startActivity(intent);
+                finish();
             }
         });
 
