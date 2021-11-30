@@ -5,14 +5,16 @@
       <map>
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/add_line_screen.xml" value="0.264" />
+        <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/add_lnf_screen.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/add_notice_screen.xml" value="0.11041666666666666" />
+        <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/arrival_time.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/boarding_check_screen.xml" value="0.24954710144927536" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/bookmark_check.xml" value="0.264" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/bookmark_check_activity_main.xml" value="0.1" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/bookmark_check_item.xml" value="0.29411764705882354" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/bookmark_check_listview.xml" value="0.15" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/bookmark_screen.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/edit_line_screen.xml" value="0.12604166666666666" />
+        <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/edit_line_screen.xml" value="0.264" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/find_password_screen.xml" value="0.2" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/home_screen.xml" value="0.1265625" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/information_screen.xml" value="0.264" />
@@ -21,11 +23,13 @@
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/line_checkbox.xml" value="0.12604166666666666" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/line_screen.xml" value="0.25" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/lnf_checkbox.xml" value="0.1" />
-        <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/lnf_screen.xml" value="0.1265625" />
+        <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/lnf_screen.xml" value="0.2" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/login_screen.xml" value="0.176" />
+        <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/manager_home_screen.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/modify_info_check.xml" value="0.1" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/modify_info_screen.xml" value="0.25" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/notice_checkbox.xml" value="0.1" />
+        <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/notice_detail.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/notice_screen.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/penalty_listview_item.xml" value="0.1453804347826087" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/penaltyactivity_main.xml" value="0.1453804347826087" />
@@ -40,11 +44,12 @@
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/user_line.xml" value="0.264" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/user_line_screen.xml" value="0.264" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/user_lnf.xml" value="0.1" />
-        <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/user_lnf_screen.xml" value="0.6" />
+        <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/user_lnf_detail.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/user_lnf_screen.xml" value="0.264" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/user_notice.xml" value="0.1265625" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/user_notice_screen.xml" value="0.1265625" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/waiting_check.xml" value="0.264" />
-        <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/waiting_check_item.xml" value="0.1" />
+        <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/waiting_check_item.xml" value="0.264" />
         <entry key="..\:/Users/jiin/Documents/GitHub/SE/app/src/main/res/layout/waiting_screen.xml" value="0.1265625" />
         <entry key="..\:/Users/leehb/Documents/GitHub/SE/app/src/main/res/drawable/check_box_icon.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/leehb/Documents/GitHub/SE/app/src/main/res/layout/activity_main.xml" value="0.25364583333333335" />
