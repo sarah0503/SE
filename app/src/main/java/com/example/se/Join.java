@@ -52,7 +52,7 @@ public class Join extends AppCompatActivity {
         btn_numck = (Button)findViewById(R.id.btn_numck);       //학번 확인 버튼
         btn_emailck = (Button)findViewById(R.id.btn_emailck);   //email 중복확인 버튼
 
-        User user = new User();
+        User user = new User();     //이거를 User에서 불러오는게 맞나?
 
         btn_numck.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,9 +162,7 @@ public class Join extends AppCompatActivity {
 
                     queue.add(request);
 
-                    Toast.makeText(getApplicationContext(), "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
-                    finish();
-                }
+                    Toast.makeText(getApplicationContext(), "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();}
                 if (queue != null) {
                     queue.cancelAll(TAG);
                 }
@@ -175,7 +173,10 @@ public class Join extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "회원가입이 취소되었습니다.", Toast.LENGTH_LONG).show();
-                finish();
+
+               // Intent intent = new Intent(getApplicationContext(), Login.class);
+               // startActivity(intent);
+
             }
         });
     }

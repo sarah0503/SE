@@ -21,6 +21,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Reservation_screen extends AppCompatActivity {
     Spinner arrivalSpinner, departureSpinner, timeSpinner;
@@ -30,13 +32,18 @@ public class Reservation_screen extends AppCompatActivity {
     String arrival;
     String departure;
 
-    final ArrayList<String> arrivals = new ArrayList <String> ();
-    final ArrayList<String> departures = new ArrayList <String> ();
-    final ArrayList<Integer> times = new ArrayList <Integer>();
+    ArrayList<String> arrivals ;
+    ArrayList<String> departures;
+    ArrayList<Integer> times ;
 
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
+
+        arrivals = new ArrayList <> ();
+        departures = new ArrayList <> ();
+        times = new ArrayList <>();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reservation_screen);
 
@@ -90,7 +97,7 @@ public class Reservation_screen extends AppCompatActivity {
         arrivalSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                arrival = (String) arrivals.get(position);
+                //arrival = (String) arrivals.get(position);
             }
 
             @Override
@@ -103,7 +110,7 @@ public class Reservation_screen extends AppCompatActivity {
         departureSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                departure = (String) departures.get(position);
+                //departure = (String) departures.get(position);
             }
 
             @Override
@@ -115,7 +122,7 @@ public class Reservation_screen extends AppCompatActivity {
         timeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                time = (String) Integer.toString(times.get(position));
+                //time = (String) Integer.toString(times.get(position));
             }
 
             @Override

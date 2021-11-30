@@ -56,7 +56,7 @@ public class Login extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String id;                                          // DB에서 가져오는 ID이면 이게 int로 둬야하는지 String으로 둬야하는지..?
+                String id;
                 String pass;
                 id = editTextID.getText().toString();
                 pass = editTextPassword.getText().toString();
@@ -69,6 +69,7 @@ public class Login extends AppCompatActivity {
                 else if (result.equals("fail")){
                     Toast.makeText(getApplicationContext(), "로그인 정보가 잘못되었습니다.", Toast.LENGTH_SHORT).show();
                     }
+                //테스트용 
                 else if(id.equals("manager")){
 
                     Toast.makeText(getApplicationContext(), "관리자 로그인되었습니다.", Toast.LENGTH_SHORT).show();

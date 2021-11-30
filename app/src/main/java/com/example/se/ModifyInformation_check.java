@@ -50,7 +50,8 @@ public class ModifyInformation_check extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {       // 내정보 창으로 가기
-                finish();
+                Intent intent = new Intent(getApplicationContext(), Information_screen.class);
+                startActivity(intent);
             }
         });
 
