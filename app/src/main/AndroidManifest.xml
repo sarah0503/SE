@@ -178,6 +178,16 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".Boarding_check_screen"
+            android:exported="true"
+            android:usesCleartextTraffic="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".Bookmark_check"
             android:exported="true"
             android:usesCleartextTraffic="true">
