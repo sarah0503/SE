@@ -10,7 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
-public class Bookmark_check extends AppCompatActivity {
+public class
+Bookmark_check extends AppCompatActivity {
 
     ArrayList<Bookmark> bookmarkList;
     Button btn_back;
@@ -25,8 +26,7 @@ public class Bookmark_check extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Information_screen.class);
-                startActivity(intent);
+                finish();
             }
         });
 

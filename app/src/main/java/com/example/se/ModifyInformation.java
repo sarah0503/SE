@@ -80,12 +80,8 @@ public class ModifyInformation extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    // DB 에서 정보 변경 해줘야함
-                    // 이름
-                    // 비밀번호
                     Toast.makeText(getApplicationContext(), "정보가 변경되었습니다.", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), Information_screen.class);
-                    startActivity(intent);
+                    finish();
                 }
             }
         });
@@ -93,8 +89,7 @@ public class ModifyInformation extends AppCompatActivity {
         btn_modifyCancle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Information_screen.class);
-                startActivity(intent);
+                finish();
             }
         });
     }
