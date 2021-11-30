@@ -31,28 +31,20 @@ public class ModifyInformation_check extends AppCompatActivity {
             public void onClick(View v) {
                 String pass;
                 pass = et_pass.getText().toString();
-                String loadPass = String.valueOf(user.getPassword());       // DB 에서 사용자 ID 정보와 일치하는 비밀번호 불러오기
 
                 if (pass.equals("")) {
                     Toast.makeText(getApplicationContext(), "값이 입력되지 않았습니다.", Toast.LENGTH_SHORT).show();
                 }
-                else {
-                    Toast.makeText(getApplicationContext(), "확인되었습니다.", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), ModifyInformation.class);
-                    startActivity(intent);
-                }
-                /*
-                else if (pass.equals(loadPass)) {       // 사용자가 입력한 값과 로드한 비밀번호가 같은 경우
-                    Toast.makeText(getApplicationContext(), "확인되었습니다.", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), ModifyInformation.class);
-                    startActivity(intent);
-                }
-                else {
+                else if (pass.equals("differ")){
                     Toast.makeText(getApplicationContext(), "일치하지 않는 정보입니다.", Toast.LENGTH_SHORT).show();
                 }
-                */
+                else {                                      // 사용자가 입력한 값과 DB 에서 로드한 비밀번호가 같은 경우
+                    Toast.makeText(getApplicationContext(), "확인되었습니다.", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
             }
         });
+
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
