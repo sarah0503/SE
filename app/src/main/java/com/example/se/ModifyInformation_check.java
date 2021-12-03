@@ -16,7 +16,6 @@ public class ModifyInformation_check extends AppCompatActivity {
     Button btn_ok;
     Button btn_back;
 
-    User user = new User();
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,16 +39,17 @@ public class ModifyInformation_check extends AppCompatActivity {
                 }
                 else {                                      // 사용자가 입력한 값과 DB 에서 로드한 비밀번호가 같은 경우
                     Toast.makeText(getApplicationContext(), "확인되었습니다.", Toast.LENGTH_SHORT).show();
-                    finish();
+                    Intent intent = new Intent(getApplicationContext(), ModifyInformation.class);
+                    startActivity(intent);
                 }
             }
         });
 
-
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {       // 내정보 창으로 가기
-                finish();
+            public void onClick(View v) {                   // 내정보 창으로 가기
+                Intent intent = new Intent(getApplicationContext(), Information_screen.class);
+                startActivity(intent);
             }
         });
 

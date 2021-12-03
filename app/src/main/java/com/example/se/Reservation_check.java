@@ -28,23 +28,19 @@ public class Reservation_check extends AppCompatActivity {
         btn_cancle = (Button) findViewById(R.id.btn_cancle);
         btn_QR = (Button) findViewById(R.id.btn_QR);
 
-        btn_QR.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(getApplicationContext(), QRIssue.class);
-                startActivity(intent);
-            }
-        });
-
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
-
-
+        btn_QR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), QRIssue.class);
+                startActivity(intent);
+            }
+        });
 
 //        btn_cancle.setOnClickListener(new View.OnClickListener() {
 //            @Override
