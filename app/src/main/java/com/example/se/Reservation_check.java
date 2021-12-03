@@ -17,6 +17,7 @@ public class Reservation_check extends AppCompatActivity {
     ArrayList<Reservation> reservationList;
     Button btn_back;
     Button btn_cancle;
+    Button btn_QR;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,16 @@ public class Reservation_check extends AppCompatActivity {
 
         btn_back = (Button) findViewById(R.id.btn_back);
         btn_cancle = (Button) findViewById(R.id.btn_cancle);
+        btn_QR = (Button) findViewById(R.id.btn_QR);
+
+        btn_QR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getApplicationContext(), QRIssue.class);
+                startActivity(intent);
+            }
+        });
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,6 +43,8 @@ public class Reservation_check extends AppCompatActivity {
                 finish();
             }
         });
+
+
 
 //        btn_cancle.setOnClickListener(new View.OnClickListener() {
 //            @Override

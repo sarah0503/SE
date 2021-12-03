@@ -66,10 +66,12 @@
         <entry key="app/src/main/res/layout/line_checkbox.xml" value="0.22010869565217392" />
         <entry key="app/src/main/res/layout/login_screen.xml" value="0.22010869565217392" />
         <entry key="app/src/main/res/layout/manager_home_screen.xml" value="0.13043478260869565" />
+        <entry key="app/src/main/res/layout/reservation_check_item.xml" value="0.375" />
         <entry key="app/src/main/res/layout/reservation_check_screen.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/reservation_screen.xml" value="0.22010869565217392" />
         <entry key="app/src/main/res/layout/resevation_screen.xml" value="0.5" />
         <entry key="app/src/main/res/layout/user_info_listview_item.xml" value="0.2921875" />
+        <entry key="app/src/main/res/layout/waiting_check_item.xml" value="0.2265625" />
       </map>
     </option>
   </component>
